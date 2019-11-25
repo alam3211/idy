@@ -24,7 +24,10 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <div class="form-inline ml-auto my-2 my-lg-0">
-                <a href="{{ url('idea/add')}}" class="btn btn-secondary my-2 my-sm-0">Add new</a>
+                <!-- <a href="{{ url('idea/add')}}" class="btn btn-secondary my-2 my-sm-0">Add new</a> -->
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addModal">
+                        Launch demo modal
+                      </button>
             </div>
         </div>
     </nav>

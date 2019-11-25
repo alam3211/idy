@@ -51,7 +51,6 @@ $di['db'] = function () use ($di) {
 };
 
 $di->setShared('sql_idea_repository', function() use ($di) {
-    $repo = new SqlIdeaRepository($di);
-
+    $repo = new SqlIdeaRepository($di->get('db'));
     return $repo;
 });

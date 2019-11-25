@@ -8,7 +8,7 @@
 
 {% block content %}
 
-
+<h1>THIS IS ADD PAGE</h1>
 
 {% endblock %}
 
