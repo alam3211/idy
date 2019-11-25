@@ -11,12 +11,13 @@ class Idea
     private $ratings;
     private $votes;
     
-    public function __construct(IdeaId $id, $title, $description, Author $author)
+    public function __construct(IdeaId $id, $title, $description, $author, $email)
     {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->author = $author;
+        $this->email = $email;
         $this->ratings = array();
         $this->votes = 0;
     }
@@ -41,6 +42,15 @@ class Idea
         return $this->votes;
     }
 
+    public function author()
+    {
+        return $this->author;
+    }
+
+    public function email()
+    {
+        return $this->email;
+    }
     public function addRating($user, $ratingValue)
     {
         $newRating = new Rating($user, $ratingValue);
@@ -84,9 +94,9 @@ class Idea
         return $totalRatings / $numberOfRatings;
     }
 
-    public static function makeIdea($title, $description, $author)
+    public static function makeIdea($title, $description, $author, $email)
     {
-        $newIdea = new Idea(new IdeaId(), $title, $description, $author);
+        $newIdea = new Idea(new IdeaId(), $title, $description, $author, $email);
         
         return $newIdea;
     }

@@ -19,7 +19,7 @@ $router->addPost('/idea/new', [
     'namespace' => $namespace,
     'module' => 'idea',
     'controller' => 'idea',
-    'action' => 'add'
+    'action' => 'addPost'
 ]);
 
 $router->addPost('/idea/rate', [

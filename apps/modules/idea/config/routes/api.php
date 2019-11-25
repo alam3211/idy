@@ -1,3 +1,3 @@
 <?php
 
-$namespace = 'Idy\Idea\Controllers\Web';
+$namespace = 'Idy\Idea\Controllers\Api';

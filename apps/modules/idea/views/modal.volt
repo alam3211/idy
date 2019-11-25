@@ -35,7 +35,7 @@
                         <label class="font-weight-bold">Description</label>
                         <textarea type="text" rows="5" class="form-control" placeholder="Description" name="description"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="addIdeas" class="btn btn-primary">Submit</button>
                 </form>
             </div>
           </div>
@@ -45,5 +45,18 @@
 {% endblock %}
 
 {% block scripts %}
-
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#addIdeas").submit(function(){
+        alert("WORKING");
+          $.ajax({
+              url: "idea/add",
+              type:'POST',
+              success: function(data) {
+                  alert("MANTAP");
+              }
+          });     
+      });
+  });
+</script>
 {% endblock %}

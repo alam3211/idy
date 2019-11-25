@@ -106,16 +106,13 @@
                 <div class="author">{{ idea['author'] }}</div>
                 <div class="email">{{ idea['email'] }}</div>
                 <div class="rating">{{ idea['ratings'] }} <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">{{ idea['vote'] }}<a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
+                <div class="rating">{{ idea['vote'] }} <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
             </div>
         </li>
     {% endfor %}
     </ul>
 
-{% include 'modal.volt' %}
-
 {% endblock %}
 
 {% block scripts %}
-
 {% endblock %}

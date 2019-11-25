@@ -17,17 +17,14 @@
 <body>
     
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Idy</a>
+    <a class="navbar-brand" href="{{ url('idea/add')}}">Idy</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <div class="form-inline ml-auto my-2 my-lg-0">
-                <!-- <a href="{{ url('idea/add')}}" class="btn btn-secondary my-2 my-sm-0">Add new</a> -->
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addModal">
-                        Launch demo modal
-                      </button>
+                <a href="{{ url('idea/add')}}" class="btn btn-secondary my-2 my-sm-0">Add new</a>
             </div>
         </div>
     </nav>
