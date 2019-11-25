@@ -8,15 +8,21 @@ use Idy\Idea\Application\ViewAllIdeasService;
 use Idy\Idea\Application\CreateNewIdeaService;
 use Idy\Idea\Application\CreateNewIdeaRequest;
 
+use Idy\Idea\Application\VoteIdeaService;
+use Idy\Idea\Application\VoteIdeaRequest;
+
 class IdeaController extends Controller
 {
     private $ideaRepository;
     private $allIdeaService;
+    private $createIdeaService;
+    private $voteIdeaService;
 
     public function initialize(){
         $this->ideaRepository = $this->di->getShared('sql_idea_repository');    
         $this->allIdeasService = new ViewAllIdeasService($this->ideaRepository);
         $this->createIdeaService = new CreateNewIdeaService($this->ideaRepository);
+        $this->voteIdeaService = new VoteIdeaService($this->ideaRepository);
     }
 
     public function indexAction()
@@ -51,7 +57,13 @@ class IdeaController extends Controller
 
     public function voteAction()
     {
+        $ideaId = $this->dispatcher->getParam('id');
+        $request = new VoteIdeaRequest($ideaId);
 
+        $this->voteIdeaService->execute($request);
+        $this->response->redirect('/');
+        $this->view->disable();
+        return;
     }
 
     public function rateAction()

@@ -18,7 +18,11 @@ class CreateNewIdeaService
     public function execute(CreateNewIdeaRequest $request)
     {
         try {
-            $idea = Idea::makeIdea($request->ideaTitle, $request->ideaDescription, $request->authorName, $request->authorEmail);
+            $idea = Idea::makeIdea(
+                $request->ideaTitle, 
+                $request->ideaDescription, 
+                $request->authorName, 
+                $request->authorEmail);
             $this->ideaRepository->save($idea);
             $response = new CreateNewIdeaResponse($idea, null);
             return $response;

@@ -24,7 +24,14 @@ $router->addPost('/idea/new', [
 
 $router->addPost('/idea/rate', [
     'namespace' => $namespace,
-    'module' => 'dashboard',
+    'module' => 'idea',
     'controller' => 'idea',
     'action' => 'rate'
+]);
+
+$router->addPost('/idea/vote/{id}', [
+    'namespace' => $namespace,
+    'module' => 'idea',
+    'controller' => 'idea',
+    'action' => 'vote',
 ]);

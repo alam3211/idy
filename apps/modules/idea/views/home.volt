@@ -105,8 +105,12 @@
                 <p>{{ idea['description'] }}</p>
                 <div class="author">{{ idea['author'] }}</div>
                 <div class="email">{{ idea['email'] }}</div>
-                <div class="rating">{{ idea['ratings'] }} <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div>
-                <div class="rating">{{ idea['vote'] }} <a href="{{ url('idea/vote/') }}{{ 1 }}">Vote</a></div>
+                <div class="rating">{{ idea['ratings'] }} 
+                    <form method="POST" action="{{ url('idea/vote/') }}{{ idea['id'] }}">
+                        <button class="btn btn-sm btn-primary" type="submit">VOTE</button>
+                    </form>
+                    <!-- <a href="{{ url('idea/rate/') }}{{ 1 }}">Rate</a></div> -->
+                <div class="rating">{{ idea['vote'] }} <a href="{{ url('idea/vote/') }}{{ idea['id'] }}">Vote</a></div>
             </div>
         </li>
     {% endfor %}

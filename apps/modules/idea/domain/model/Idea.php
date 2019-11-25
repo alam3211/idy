@@ -11,7 +11,7 @@ class Idea
     private $ratings;
     private $votes;
     
-    public function __construct(IdeaId $id, $title, $description, $author, $email)
+    public function __construct(IdeaId $id, $title, $description, $author, $email, $votes = 0)
     {
         $this->id = $id;
         $this->title = $title;
@@ -19,7 +19,7 @@ class Idea
         $this->author = $author;
         $this->email = $email;
         $this->ratings = array();
-        $this->votes = 0;
+        $this->votes = $votes;
     }
 
     public function id() 

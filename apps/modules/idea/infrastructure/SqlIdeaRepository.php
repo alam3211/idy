@@ -19,7 +19,14 @@ class SqlIdeaRepository implements IdeaRepository
 
     public function byId(IdeaId $id)
     {
-
+        $querySet = $this->db->query(
+            "SELECT * FROM $this->dbTable WHERE id = ?",
+            [
+                "{$id->id()}",
+            ]
+        );
+        $resultSet = $querySet->fetch();
+        return $resultSet;
     }
 
     public function save(Idea $idea)
@@ -70,6 +77,7 @@ class SqlIdeaRepository implements IdeaRepository
                 "{$id->id()}",
             ]
         );
+        dd($querySet->fetch());
         $resultSet = $querySet->fetch();
         return !($resultSet == false);
     }

@@ -27,7 +27,7 @@
         <label class="font-weight-bold">Description</label>
         <textarea type="text" rows="5" class="form-control" placeholder="Description" name="ideaDescription"></textarea>
     </div>
-    <button type="submit">SUBMIT</button>
+    <button class="btn btn-primary" type="submit">SUBMIT</button>
 </form>
 {% endblock %}
 
