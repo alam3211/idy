@@ -20,9 +20,9 @@ $loader = new Loader();
 
 $loader->registerNamespaces([
 
-    'Idy\Idea\Domain\Model' => APP_PATH . '/modules/idea/domain/model',
-    'Idy\Idea\Application' => APP_PATH . '/modules/idea/application',
-    'Idy\Idea\Infrastructure' => APP_PATH . '/modules/idea/infrastructure',
+    'Idy\Ipd\Domain\Model' => APP_PATH . '/modules/ipd/domain/model',
+    'Idy\Ipd\Application' => APP_PATH . '/modules/ipd/application',
+    'Idy\Ipd\Infrastructure' => APP_PATH . '/modules/ipd/infrastructure',
 
 ]);
 

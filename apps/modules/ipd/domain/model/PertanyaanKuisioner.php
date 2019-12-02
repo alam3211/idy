@@ -11,7 +11,7 @@ class PertanyaanKuisioner
     private $isiInggris;
     private $jawaban;
     
-    public function __construct($id = null, $isi, $isiInggris, JawabanKuisioner $jawaban)
+    public function __construct($isi, $isiInggris, $jawaban = null, $id = null)
     {
         $this->id           = $id;
         $this->isi          = $isi;
@@ -32,5 +32,10 @@ class PertanyaanKuisioner
     public function isiInggris()
     {
         return $this->isiInggris;
+    }
+
+    public static function makePertanyaanKuisioner($isi, $isiInggris, $jawaban = null, $id = null){
+        $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris, $jawaban, $id);
+        return $pertanyaanKuisioner;
     }
 }

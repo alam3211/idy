@@ -2,12 +2,12 @@
 
 namespace Idy\Ipd\Domain\Model;
 
-use Idy\idea\Domain\Model\JawabanKuisioner;
-use Idy\idea\Domain\Model\PertanyaanKuisioner;
+use Idy\ipd\Domain\Model\JawabanKuisioner;
+use Idy\ipd\Domain\Model\PertanyaanKuisioner;
 
 interface KuisionerRepository
 {
-    public function save(PertanyaanKuisioner $idea);
+    public function save(PertanyaanKuisioner $pertanyaanKuisioner);
     
     public function allPertanyaanKuisioner();
 }
