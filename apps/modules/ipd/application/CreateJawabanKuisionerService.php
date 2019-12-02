@@ -2,7 +2,7 @@
 
 namespace Idy\Ipd\Application;
 
-use Idy\Ipd\Domain\Model\KuisionerRepository;
+use Idy\Ipd\Domain\Model\JawabanRepository;
 use Idy\Ipd\Domain\Model\JawabanKuisinoner;
 
 use Idy\Ipd\Application\CreateJawabanKuisionerRequest;
