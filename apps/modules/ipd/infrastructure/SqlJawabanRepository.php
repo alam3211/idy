@@ -3,8 +3,8 @@
 namespace Idy\Ipd\Infrastructure;
 use Phalcon\Di;
 
-use Idy\Idea\Domain\Model\PertanyaanKuisioner;;
-use Idy\Idea\Domain\Model\JawabanKuisioner;;
+use Idy\Idea\Domain\Model\PertanyaanKuisioner;
+use Idy\Idea\Domain\Model\JawabanKuisioner;
 use Idy\Idea\Domain\Model\JawabanRepository;
 
 class SqlJawabanRepository implements JawabanRepository
