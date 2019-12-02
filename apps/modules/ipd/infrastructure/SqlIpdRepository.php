@@ -1,84 +1,40 @@
 <?php 
 
-namespace Idy\Idea\Infrastructure;
+namespace Idy\Ipd\Infrastructure;
 use Phalcon\Di;
 
-use Idy\Idea\Domain\Model\Idea;
-use Idy\Idea\Domain\Model\IdeaId;
-use Idy\Idea\Domain\Model\IdeaRepository;
+use Idy\Idea\Domain\Model\PertanyaanKuisioner;;
+use Idy\Idea\Domain\Model\KuisionerRepository;
 
-class SqlIdeaRepository implements IdeaRepository
+class SqlIpdRepository implements KuisionerRepository
 {
     private $db;
     private $dbTable;
     public function __construct($db)
     {        
         $this->db = $db;
-        $this->dbTable = "idea";
     }
 
-    public function byId(IdeaId $id)
+    public function save(PertanyaanKuisioner $pertanyaanKuisioner)
     {
-        $querySet = $this->db->query(
-            "SELECT * FROM $this->dbTable WHERE id = ?",
-            [
-                "{$id->id()}",
-            ]
-        );
-        $resultSet = $querySet->fetch();
-        return $resultSet;
-    }
-
-    public function save(Idea $idea)
-    {
-        $isExist    = $this->exist($idea->id());
-        if ($isExist) {
-            $querySet   = $this->db->updateAsDict(
-                $this->dbTable,
-                [
-                    "title"         => $idea->title(),
-                    "description"   => $idea->description(),
-                    "author"        => $idea->author(),
-                    "email"         => $idea->email(),
-                    "vote"          => $idea->votes(),
-                ],
-                "id = {$idea->id()}"
-            );    
-        }else{
             $querySet   = $this->db->execute(
-                "INSERT INTO $this->dbTable (id,title,description,author,email,vote) VALUES (?,?,?,?,?,?)",
+                "INSERT INTO pertanyaan_kuisioner (isi, isinggris) VALUES (?,?)",
                 [
-                    $idea->id()->id(),
-                    $idea->title(),
-                    $idea->description(),
-                    $idea->author(),
-                    $idea->email(),
-                    $idea->votes(),
+                    $pertanyaanKuisioner->isi(),
+                    $pertanyaanKuisioner->isiInggris(),
                 ]
             );
-        }
         $resultSet = $querySet;
         return $resultSet;
     }
 
-    public function allIdeas()
+    public function allPertanyaanKuisioner()
     {
         $querySet = $this->db->query(
-            "SELECT * FROM $this->dbTable "
+            "SELECT * FROM pertanyaan_kuisioner "
         );
         $resultSet = $querySet->fetchAll();
         return $resultSet;
     }
-    
-    public function exist(IdeaId $id) : bool {
-        $querySet = $this->db->query(
-            "SELECT * FROM $this->dbTable WHERE id = ?",
-            [
-                "{$id->id()}",
-            ]
-        );
-        dd($querySet->fetch());
-        $resultSet = $querySet->fetch();
-        return !($resultSet == false);
-    }
+
 }
