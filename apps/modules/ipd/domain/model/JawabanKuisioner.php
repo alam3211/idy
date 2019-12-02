@@ -2,17 +2,20 @@
 
 namespace Idy\Ipd\Domain\Model;
 
-class PertanyaanKuisioner
+class JawabanKuinoner
 {
     private $id;
-    private $isi;
-    private $isiInggris;
+    private $jawaban;
+    private $jawabanInggris;
+    private $bobot;
+    private $pertanyaan;
     
-    public function __construct($id = null, $isi, $isiInggris)
+    public function __construct($id = null, $jawaban, $jawabanInggris, $bobot, PertanyaanKuisioner $pertanyaan)
     {
         $this->id = $id;
-        $this->isi = $isi;
-        $this->isiInggris = $isiInggris;
+        $this->jawaban = $jawaban;
+        $this->jawabanInggris = $jawabanInggris;
+        $this->bobot = $bobot;
+        $this->pertanyaan = $pertanyaan;
     }
-
 }

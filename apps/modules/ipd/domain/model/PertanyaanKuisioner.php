@@ -9,14 +9,12 @@ class PertanyaanKuisioner
     private $id;
     private $isi;
     private $isiInggris;
-    private $jawaban;
     
-    public function __construct($id = null, $isi, $isiInggris, JawabanKuisioner $jawaban)
+    public function __construct($id = null, $isi, $isiInggris)
     {
         $this->id           = $id;
         $this->isi          = $isi;
         $this->isiInggris   = $isiInggris;
-        $this->jawaban      = $jawaban;
     }
 
     public function id()
