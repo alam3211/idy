@@ -45,7 +45,8 @@ class IpdController extends Controller
             $respond = $this->createPertanyaanKuisionerService->execute($request);
             if(!is_null($respond->pertanyaanKuisioner)){
                 foreach($jawaban_collection as $key => $item){
-                    $jawabanRequest = new CreateJawabanKuisionerRequest($item, $jawabanInggris_collection[$key], $bobot_collection[$key]);
+                    //these collection must have same length
+                    $jawabanRequest = new CreateJawabanKuisionerRequest($item, $jawabanInggris_collection[$key], $bobot_collection[$key], $respond->pertanyaanKuisioner);
 
                     $jawabanRespond = $this->createJawabanKuisionerService->execute($jawabanRequest);
 
