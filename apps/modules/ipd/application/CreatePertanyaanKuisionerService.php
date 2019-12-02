@@ -4,30 +4,30 @@ namespace Idy\Ipd\Application;
 
 use Idy\Ipd\Domain\Model\KuisionerRepository;
 use Idy\Ipd\Domain\Model\PertanyaanKuisioner;
+
 use Idy\Ipd\Application\CreatePertanyaanKuisionerRequest;
 
 class CreatePertanyaanKuisionerService
 {
-    private $ideaRepository;
+    private $kuisionerRepository;
 
-    public function __construct(IdeaRepository $ideaRepository)
+    public function __construct(KuisionerRepository $kuisionerRepository)
     {
-        $this->ideaRepository = $ideaRepository;
+        $this->kuisionerRepository = $kuisionerRepository;
     }
 
-    public function execute(CreateNewIdeaRequest $request)
+    public function execute(CreatePertanyaanKuisionerRequest $request)
     {
         try {
-            $idea = Idea::makeIdea(
-                $request->ideaTitle, 
-                $request->ideaDescription, 
-                $request->authorName, 
-                $request->authorEmail);
-            $this->ideaRepository->save($idea);
-            $response = new CreateNewIdeaResponse($idea, null);
+            $pertanyaanKuisioner = PertanyaanKuisioner::makePertanyaanKuisioner(
+                $request->isi, 
+                $request->isiInggris
+            );
+            $this->kuisionerRepository->save($pertanyaanKuisioner);
+            $response = new CreatePertanyaanKuisionerRespond($pertanyaanKuisioner, null);
             return $response;
         } catch (Execption $e) {
-            return new CreateNewIdeasResponse(null, $e);
+            return new CreatePertanyaanKuisionerRespond(null, $e);
         }
     }
 

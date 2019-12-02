@@ -7,7 +7,7 @@ class CreatePertanyaanKuisionerRespond
     public $pertanyaanKuisioner;
     public $errors;
 
-    public function __construct( $pertanyaanKuisioner = null , $errors = null){
+    public function __construct($pertanyaanKuisioner = null , $errors = null){
         $this->pertanyaanKuisioner = $ideas;
         $this->errors = $errors;
     }
