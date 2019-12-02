@@ -2,18 +2,18 @@
 
 namespace Idy\Ipd\Application;
 
-class CreatePertanyaanKuisionerRespond
+class CreateJawabanKuisionerRespond
 {
-    public $pertanyaanKuisioner;
+    public $jawabanKuisioner;
     public $errors;
 
     public function __construct($pertanyaanKuisioner = null , $errors = null){
-        $this->pertanyaanKuisioner = $pertanyaanKuisioner;
+        $this->jawabanKuisioner = $pertanyaanKuisioner;
         $this->errors = $errors;
     }
 
-    public function pertanyaanKuisioner(){
-        return $this->pertanyaanKuisioner;
+    public function jawabanKuisioner(){
+        return $this->jawabanKuisioner;
     }
 
     public function errors(){
