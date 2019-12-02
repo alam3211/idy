@@ -57,6 +57,6 @@ $di->setShared('sql_ipd_repository', function() use ($di) {
 });
 
 $di->setShared('sql_jawaban_repository', function() use ($di) {
-    $repo = new SqlJawabanRepositor($di->get('db'));
+    $repo = new SqlJawabanRepository($di->get('db'));
     return $repo;
 });

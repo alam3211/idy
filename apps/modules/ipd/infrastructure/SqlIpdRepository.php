@@ -3,8 +3,8 @@
 namespace Idy\Ipd\Infrastructure;
 use Phalcon\Di;
 
-use Idy\Idea\Domain\Model\PertanyaanKuisioner;
-use Idy\Idea\Domain\Model\KuisionerRepository;
+use Idy\Ipd\Domain\Model\PertanyaanKuisioner;
+use Idy\Ipd\Domain\Model\KuisionerRepository;
 
 class SqlIpdRepository implements KuisionerRepository
 {
