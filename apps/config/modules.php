@@ -11,5 +11,15 @@ return array(
         'defaultController' => 'idea',
         'defaultAction' => 'index'
     ],
+    'ipd' => [
+        'namespace' => 'Idy\Ipd',
+        'webControllerNamespace' => 'Idy\Ipd\Controllers\Web',
+        'apiControllerNamespace' => 'Idy\Ipd\Controllers\Api',
+        'className' => 'Idy\Ipd\Module',
+        'path' => APP_PATH . '/modules/ipd/Module.php',
+        'defaultRouting' => false,
+        'defaultController' => 'ipd',
+        'defaultAction' => 'index'
+    ],
 
 );
