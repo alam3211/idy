@@ -3,7 +3,7 @@
 namespace Idy\Ipd\Domain\Model;
 
 use \Idy\Ipd\Domain\Model\PertanyaanKuisioner;
-use Idy\ipd\Domain\Model\JawabanKuisionerId;
+use Idy\Ipd\Domain\Model\JawabanKuisionerId;
 
 class JawabanKuisioner
 {
@@ -29,7 +29,7 @@ class JawabanKuisioner
     }
 
     public function jawabanInggris(){
-        return $this->jawabanInggis;
+        return $this->jawabanInggris;
     }
 
     public function bobot(){
@@ -37,7 +37,7 @@ class JawabanKuisioner
     }
 
     public static function makeJawabanKuisioner($jawaban, $jawabanInggris, $bobot){
-        $jawabanKusioner = new JawabanKuisinoner($jawaban, $jawabanInggris, $bobot, new JawabanKuisionerId());
+        $jawabanKusioner = new JawabanKuisioner($jawaban, $jawabanInggris, $bobot, new JawabanKuisionerId());
         
         return $jawabanKusioner;
     }

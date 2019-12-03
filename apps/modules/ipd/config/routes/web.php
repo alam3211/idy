@@ -8,3 +8,10 @@ $router->addGet('/ipd', [
     'controller' => 'ipd',
     'action' => 'index'
 ]);
+
+$router->add('/ipd/store',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'ipd',
+    'action' => 'addPost'
+])->setName('ipd-store')->via(['POST']);;

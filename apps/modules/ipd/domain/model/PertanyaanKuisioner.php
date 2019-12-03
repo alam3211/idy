@@ -11,7 +11,7 @@ class PertanyaanKuisioner
     private $isiInggris;
     private $jawaban = array();
     
-    public function __construct($isi, $isiInggris, JawabanKuisinoner $jawaban = null, $id = null)
+    public function __construct($isi, $isiInggris, JawabanKuisinoner $jawaban = null, PertanyaanKuisionerId $id)
     {
         $this->id           = $id;
         $this->isi          = $isi;
@@ -37,7 +37,7 @@ class PertanyaanKuisioner
         
         $existed = false;
         foreach($this->jawaban as $item){
-            if($item->equals($newJawaban->id)){
+            if($item->id()->equals($newJawaban->id())){
                 $existed = true;
             }
         }
@@ -49,8 +49,8 @@ class PertanyaanKuisioner
         }
     }
 
-    public static function makePertanyaanKuisioner($isi, $isiInggris, $jawaban = null, $id = null){
-        $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris, $jawaban, $id);
+    public static function makePertanyaanKuisioner($isi, $isiInggris, $jawaban = null){
+        $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris, $jawaban, new PertanyaanKuisionerId());
         return $pertanyaanKuisioner;
     }
 }

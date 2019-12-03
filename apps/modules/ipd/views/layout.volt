@@ -16,7 +16,7 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="{{ url('idea/add')}}">Idy</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
                 <a href="{{ url('idea/add')}}" class="btn btn-secondary my-2 my-sm-0">Add new</a>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <main role="main" class="container">
 

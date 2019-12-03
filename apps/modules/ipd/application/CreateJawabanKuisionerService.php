@@ -3,7 +3,7 @@
 namespace Idy\Ipd\Application;
 
 use Idy\Ipd\Domain\Model\JawabanRepository;
-use Idy\Ipd\Domain\Model\JawabanKuisinoner;
+use Idy\Ipd\Domain\Model\JawabanKuisioner;
 
 use Idy\Ipd\Application\CreateJawabanKuisionerRequest;
 
@@ -19,9 +19,9 @@ class CreateJawabanKuisionerService
     public function execute(CreateJawabanKuisionerRequest $request)
     {
         try {
-            $jawabanKuisioner = JawabanKuisinoner::makeJawabanKuisioner(
-                $request->isi, 
-                $request->isiInggris,
+            $jawabanKuisioner = JawabanKuisioner::makeJawabanKuisioner(
+                $request->jawaban, 
+                $request->jawabanInggris,
                 $request->bobot,
             );
             $this->jawabanRepository->save($jawabanKuisioner,$request->pertanyaanKuisioner);

@@ -55,6 +55,7 @@ class IpdController extends Controller
                     }
                 }
             }
+            return $this->response->redirect('/');
         }catch(Exception $e){
 
         }

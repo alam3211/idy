@@ -17,16 +17,16 @@ class SqlIpdRepository implements KuisionerRepository
 
     public function save(PertanyaanKuisioner $pertanyaanKuisioner)
     {
-        return "save success";
-        //     $querySet   = $this->db->execute(
-        //         "INSERT INTO pertanyaan_kuisioner (isi, isinggris) VALUES (?,?)",
-        //         [
-        //             $pertanyaanKuisioner->isi(),
-        //             $pertanyaanKuisioner->isiInggris(),
-        //         ]
-        //     );
-        // $resultSet = $querySet;
-        // return $resultSet;
+            $querySet   = $this->db->execute(
+                "INSERT INTO pertanyaan_kuisioner (id, isi, isi_inggris) VALUES (?,?,?)",
+                [
+                    $pertanyaanKuisioner->id()->id(),
+                    $pertanyaanKuisioner->isi(),
+                    $pertanyaanKuisioner->isiInggris(),
+                ]
+            );
+        $resultSet = $querySet;
+        return $resultSet;
     }
 
     public function allPertanyaanKuisioner()
