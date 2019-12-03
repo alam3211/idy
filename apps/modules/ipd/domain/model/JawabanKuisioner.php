@@ -2,7 +2,9 @@
 
 namespace Idy\Ipd\Domain\Model;
 
-class JawabanKuisinoner
+use \Idy\Ipd\Domain\Model\PertanyaanKuisioner;
+
+class JawabanKuisioner
 {
     private $id;
     private $jawaban;
@@ -18,4 +20,36 @@ class JawabanKuisinoner
         $this->bobot = $bobot;
         $this->pertanyaan = $pertanyaan;
     }
+
+    public function id()
+    {
+        return $this->id;
+    }
+
+    public function jawaban()
+    {
+        return $this->jawaban;
+    }
+
+    public function jawabanInggris()
+    {
+        return $this->jawabanInggris;
+    }
+
+    public function bobot()
+    {
+        return $this->bobot;
+    }
+
+    public function pertanyaan()
+    {
+        return $this->pertanyaan;
+    }
+
+    public static function makeJawabanKuisioner($jawaban, $jawabanInggris, $bobot, PertanyaanKuisioner $pertanyaan, $id = null)
+    {
+        $jawabanKuisioner = new JawabanKuisioner($jawaban, $jawabanInggris, $bobot, $pertanyaan, $id);
+        return $jawabanKuisioner;
+    }
+
 }
