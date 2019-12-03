@@ -6,7 +6,9 @@ use Idy\Ipd\Application\CreateJawabanKuisionerRequest;
 use Idy\Ipd\Application\CreateJawabanKuisionerService;
 use Idy\Ipd\Application\CreatePertanyaanKuisionerService;
 use Idy\Ipd\Application\CreatePertanyaanKuisionerRequest;
-
+use Idy\Ipd\Application\ViewAllPertanyaanJawabanService;
+use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdService;
+use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdRequest;
 use Phalcon\Mvc\Controller;
 
 class IpdController extends Controller
@@ -19,25 +21,25 @@ class IpdController extends Controller
     
     public function initialize(){
         $this->kuisionerRepository              = $this->di->getShared('sql_ipd_repository');
-        $this->jawabanRepository = $this->di->getShared('sql_jawaban_repository');
+        $this->jawabanRepository                = $this->di->getShared('sql_jawaban_repository');
         $this->createPertanyaanKuisionerService = new  CreatePertanyaanKuisionerService($this->kuisionerRepository);
-        $this->createJawabanKuisionerService = new CreateJawabanKuisionerService($this->jawabanRepository);
+        $this->createJawabanKuisionerService    = new CreateJawabanKuisionerService($this->jawabanRepository);
+        $this->viewAllPertanyaanJawabanService  = new ViewAllPertanyaanJawabanService($this->kuisionerRepository);
+        $this->viewPertanyaanJawabanService     = new ViewPertanyaanJawabanByPertanyaanIdService($this->kuisionerRepository);
     }
 
-    public function indexAction()
-    {
+    public function indexAction(){
         $this->view->pick('home');
         return;
     }
 
-    public function addPostAction()
-    {
+    public function addPostAction(){
         $isi        = $this->request->getPost('isi');
         $isiInggris = $this->request->getPost('isiInggris');
 
-        $jawaban_collection = $this->request->getPost('jawaban');
-        $jawabanInggris_collection = $this->request->getPost('jawabanInggris');
-        $bobot_collection = $this->request->getPost('bobot');
+        $jawaban_collection         = $this->request->getPost('jawaban');
+        $jawabanInggris_collection  = $this->request->getPost('jawabanInggris');
+        $bobot_collection           = $this->request->getPost('bobot');
 
         $request = new CreatePertanyaanKuisionerRequest($isi, $isiInggris);
         
@@ -59,5 +61,16 @@ class IpdController extends Controller
         }catch(Exception $e){
 
         }
+    }
+
+    public function listAction(){
+        $respond = $this->viewAllPertanyaanJawabanService->execute();
+        dd($respond);
+    }
+
+    public function editAction(){
+        $request = new ViewPertanyaanJawabanByPertanyaanIdRequest($this->dispatcher->getParam('id'));
+        $respond = $this->viewPertanyaanJawabanService->execute($request);
+        dd($respond);
     }
 }

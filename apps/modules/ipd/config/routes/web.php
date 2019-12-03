@@ -15,3 +15,17 @@ $router->add('/ipd/store',[
     'controller' => 'ipd',
     'action' => 'addPost'
 ])->setName('ipd-store')->via(['POST']);;
+
+$router->add('/ipd/list',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'ipd',
+    'action' => 'list'
+])->setName('ipd-list');
+
+$router->add('/ipd/edit/{id}',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'ipd',
+    'action' => 'edit'
+])->setName('ipd-edit');

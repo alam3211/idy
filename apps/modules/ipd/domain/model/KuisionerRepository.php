@@ -10,4 +10,8 @@ interface KuisionerRepository
     public function save(PertanyaanKuisioner $pertanyaanKuisioner);
     
     public function allPertanyaanKuisioner();
+
+    public function allPertanyaanWithJawaban();
+
+    public function pertanyaanWithJawabanByPertanyaanId($id);
 }

@@ -38,4 +38,22 @@ class SqlIpdRepository implements KuisionerRepository
         return $resultSet;
     }
 
+    public function allPertanyaanWithJawaban(){
+        $querySet = $this->db->query(
+            "SELECT * FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id"
+        );
+        $resultSet = $querySet->fetchAll();
+        return $resultSet;
+    }
+
+    public function pertanyaanWithJawabanByPertanyaanId($id){
+        $querySet = $this->db->query(
+            "SELECT * FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id WHERE p.id = ?",[
+                $id
+            ]
+        );
+        $resultSet = $querySet->fetchAll();
+        return $resultSet;
+    }
+
 }
