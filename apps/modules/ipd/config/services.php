@@ -3,6 +3,7 @@
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 use Idy\Ipd\Infrastructure\SqlIpdRepository;
+use Idy\Ipd\Infrastructure\SqlJawabanRepository;
 
 $di['voltServiceMail'] = function($view) use ($di) {
 
@@ -52,5 +53,10 @@ $di['db'] = function () use ($di) {
 
 $di->setShared('sql_ipd_repository', function() use ($di) {
     $repo = new SqlIpdRepository($di->get('db'));
+    return $repo;
+});
+
+$di->setShared('sql_jawaban_repository', function() use ($di) {
+    $repo = new SqlJawabanRepository($di->get('db'));
     return $repo;
 });

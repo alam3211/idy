@@ -4,9 +4,10 @@ namespace Idy\Ipd\Infrastructure;
 use Phalcon\Di;
 
 use Idy\Ipd\Domain\Model\PertanyaanKuisioner;
-use Idy\Ipd\Domain\Model\KuisionerRepository;
+use Idy\Ipd\Domain\Model\JawabanKuisioner;
+use Idy\Ipd\Domain\Model\JawabanRepository;
 
-class SqlIpdRepository implements KuisionerRepository
+class SqlJawabanRepository implements JawabanRepository
 {
     private $db;
     private $dbTable;
@@ -15,7 +16,7 @@ class SqlIpdRepository implements KuisionerRepository
         $this->db = $db;
     }
 
-    public function save(PertanyaanKuisioner $pertanyaanKuisioner)
+    public function save(JawabanKuisioner $jawabanKuisioner, PertanyaanKuisioner $pertanyaanKuisioner)
     {
         return "save success";
         //     $querySet   = $this->db->execute(
@@ -29,10 +30,13 @@ class SqlIpdRepository implements KuisionerRepository
         // return $resultSet;
     }
 
-    public function allPertanyaanKuisioner()
+    public function byPertanyaan(PertanyaanKuisioner $pertanyaanKuisioner)
     {
         $querySet = $this->db->query(
-            "SELECT * FROM pertanyaan_kuisioner "
+            "SELECT * FROM jawaban_kuisioner WHERE pertanyaanId = ? ",
+            [
+                $pertanyaanKuisioner->id
+            ]
         );
         $resultSet = $querySet->fetchAll();
         return $resultSet;
