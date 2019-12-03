@@ -25,10 +25,10 @@ class CreateJawabanKuisionerService
                 $request->bobot,
             );
             $this->jawabanRepository->save($jawabanKuisioner,$request->pertanyaanKuisioner);
-            $response = new CreateJawabanKuisionerRespond($jawabanKuisioner, null);
+            $response = new JawabanKuisionerRespond($jawabanKuisioner, null);
             return $response;
         } catch (Execption $e) {
-            return new CreateJawabanKuisionerRespond(null, $e);
+            return new JawabanKuisionerRespond(null, $e);
         }
     }
 

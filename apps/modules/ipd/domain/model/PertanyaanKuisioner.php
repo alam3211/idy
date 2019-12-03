@@ -28,9 +28,17 @@ class PertanyaanKuisioner
         return $this->isi;
     }
 
+    public function setIsi($isi){
+        $this->isi = $isi;
+    }
+
     public function isiInggris()
     {
         return $this->isiInggris;
+    }
+    
+    public function setIsiInggris($isiInggris){
+        $this->isiInggris = $isiInggris;
     }
 
     public function addJawaban($newJawaban){
@@ -49,8 +57,8 @@ class PertanyaanKuisioner
         }
     }
 
-    public static function makePertanyaanKuisioner($isi, $isiInggris, $jawaban = null){
-        $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris, $jawaban, new PertanyaanKuisionerId());
+    public static function makePertanyaanKuisioner($isi, $isiInggris, $jawaban = null, $id = null){
+        $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris, $jawaban, new PertanyaanKuisionerId($id));
         return $pertanyaanKuisioner;
     }
 }

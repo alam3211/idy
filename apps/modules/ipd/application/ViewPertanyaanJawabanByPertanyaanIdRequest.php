@@ -7,9 +7,9 @@ use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 class ViewPertanyaanJawabanByPertanyaanIdRequest
 {
     public $id;
-    public function __construct($id)
+    public function __construct(PertanyaanKuisionerId $pertanyaanKuisionerId)
     {
-        $this->id = $id;
+        $this->pertanyaanKuisionerId = $pertanyaanKuisionerId;
     }
 
 }

@@ -29,3 +29,10 @@ $router->add('/ipd/edit/{id}',[
     'controller' => 'ipd',
     'action' => 'edit'
 ])->setName('ipd-edit');
+
+$router->add('/ipd/update',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'ipd',
+    'action' => 'update'
+])->setName('ipd-update')->via(['POST']);;

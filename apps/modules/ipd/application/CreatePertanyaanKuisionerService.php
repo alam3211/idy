@@ -24,10 +24,10 @@ class CreatePertanyaanKuisionerService
                 $request->isiInggris
             );
             $this->kuisionerRepository->save($pertanyaanKuisioner);
-            $response = new CreatePertanyaanKuisionerRespond($pertanyaanKuisioner, null);
+            $response = new PertanyaanKuisionerRespond($pertanyaanKuisioner, null);
             return $response;
         } catch (Execption $e) {
-            return new CreatePertanyaanKuisionerRespond(null, $e);
+            return new PertanyaanKuisionerRespond(null, $e);
         }
     }
 

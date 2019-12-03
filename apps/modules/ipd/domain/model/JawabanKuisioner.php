@@ -28,23 +28,29 @@ class JawabanKuisioner
         return $this->jawaban;
     }
 
+    public function setJawaban($jawaban){
+        $this->jawaban = $jawaban;
+    }
+
     public function jawabanInggris(){
         return $this->jawabanInggris;
+    }
+
+    public function setJawabanInggris($jawabanInggris){
+        $this->jawabanInggris = $jawabanInggris;
     }
 
     public function bobot(){
         return $this->bobot;
     }
 
-    public static function makeJawabanKuisioner($jawaban, $jawabanInggris, $bobot){
-        $jawabanKusioner = new JawabanKuisioner($jawaban, $jawabanInggris, $bobot, new JawabanKuisionerId());
+    public function setBobot($bobot){
+        $this->bobobt = $bobot;
+    }
+
+    public static function makeJawabanKuisioner($jawaban, $jawabanInggris, $bobot , $id = null){
+        $jawabanKusioner = new JawabanKuisioner($jawaban, $jawabanInggris, $bobot, new JawabanKuisionerId($id));
         
         return $jawabanKusioner;
     }
-
-    public function pertanyaan()
-    {
-        return $this->pertanyaan;
-    }
-
 }

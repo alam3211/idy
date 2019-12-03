@@ -16,7 +16,7 @@ class ViewPertanyaanJawabanByPertanyaanIdService{
 
     public function execute(ViewPertanyaanJawabanByPertanyaanIdRequest $request){
         try{
-            $kuisioner_with_jawaban = $this->kuisionerRepository->pertanyaanWithJawabanByPertanyaanId($request->id);
+            $kuisioner_with_jawaban = $this->kuisionerRepository->pertanyaanWithJawabanByPertanyaanId($request->pertanyaanKuisionerId);
             return new ViewPertanyaanJawabanRespond($kuisioner_with_jawaban,null);
         }catch(Execption $e){
             return new ViewPertanyaanJawabanRespond(null, $e);

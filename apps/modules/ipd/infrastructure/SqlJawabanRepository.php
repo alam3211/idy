@@ -44,4 +44,27 @@ class SqlJawabanRepository implements JawabanRepository
         return $resultSet;
     }
 
+    public function update($jawabanKuisioner){
+        $querySet = $this->db->execute(
+            "UPDATE FROM jawaban_kuisioner SET jawaban = ?, jawabanInggris = ?, bobot = ? WHERE id = ?",[
+                $jawabanKuisioner->jawaban(),
+                $jawabanKuisioner->jawabanInggris(),
+                $jawabanKuisioner->bobot(),
+                $jawabanKuisioner->id()->id()
+            ]
+        );
+        $resultSet = $querySet;
+        return $resultSet;
+    }
+
+    public function destroy($array_of_id){
+        $querySet = $this->db->execute(
+            "DELETE FROM jawaban_kuisioner WHERE id = IN (?)",[
+                $array_of_id
+            ]
+        );
+        $resultSet = $querySet;
+        return $resultSet;
+    }
+
 }

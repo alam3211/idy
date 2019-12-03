@@ -2,7 +2,7 @@
 
 namespace Idy\Ipd\Application;
 
-class CreatePertanyaanKuisionerRespond
+class PertanyaanKuisionerRespond
 {
     public $pertanyaanKuisioner;
     public $errors;

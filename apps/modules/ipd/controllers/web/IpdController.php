@@ -9,6 +9,7 @@ use Idy\Ipd\Application\CreatePertanyaanKuisionerRequest;
 use Idy\Ipd\Application\ViewAllPertanyaanJawabanService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdRequest;
+use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 use Phalcon\Mvc\Controller;
 
 class IpdController extends Controller
@@ -69,8 +70,12 @@ class IpdController extends Controller
     }
 
     public function editAction(){
-        $request = new ViewPertanyaanJawabanByPertanyaanIdRequest($this->dispatcher->getParam('id'));
+        $request = new ViewPertanyaanJawabanByPertanyaanIdRequest(new PertanyaanKuisionerId($this->dispatcher->getParam('id')));
         $respond = $this->viewPertanyaanJawabanService->execute($request);
         dd($respond);
+    }
+
+    public function updateAction(){
+
     }
 }
