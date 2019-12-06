@@ -30,7 +30,7 @@ class IpdController extends Controller
     }
 
     public function indexAction(){
-        $this->view->pick('home');
+        $this->view->pick('landing-page');
         return;
     }
 
