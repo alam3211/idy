@@ -2,37 +2,37 @@
 
 $namespace = 'Idy\Ipd\Controllers\Web';
 
-$router->addGet('/ipd', [
+$router->addGet('/', [
     'namespace' => $namespace,
     'module' => 'ipd',
     'controller' => 'ipd',
     'action' => 'index'
 ]);
 
-$router->add('/ipd/store',[
+$router->add('/ipd/admin/dosen/store',[
     'namespace' => $namespace,
     'module' => 'ipd',
-    'controller' => 'ipd',
-    'action' => 'addPost'
-])->setName('ipd-store')->via(['POST']);;
+    'controller' => 'admin',
+    'action' => 'addDosen'
+])->setName('ipd-admin-dosen-store')->via(['POST']);;
 
-$router->add('/ipd/list',[
+$router->add('/ipd/admin/dosen/list',[
     'namespace' => $namespace,
     'module' => 'ipd',
-    'controller' => 'ipd',
-    'action' => 'list'
-])->setName('ipd-list');
+    'controller' => 'admin',
+    'action' => 'listDosen'
+])->setName('ipd-admin-dosen-list');
 
-$router->add('/ipd/edit/{id}',[
+$router->add('/ipd/admin/dosen/edit/{id}',[
     'namespace' => $namespace,
     'module' => 'ipd',
-    'controller' => 'ipd',
-    'action' => 'edit'
-])->setName('ipd-edit');
+    'controller' => 'admin',
+    'action' => 'editDosen'
+])->setName('ipd-admin-dosen-edit');
 
-$router->add('/ipd/update',[
+$router->add('/ipd/admin/dosen/update',[
     'namespace' => $namespace,
     'module' => 'ipd',
-    'controller' => 'ipd',
-    'action' => 'update'
-])->setName('ipd-update')->via(['POST']);;
+    'controller' => 'admin',
+    'action' => 'updateDosen'
+])->setName('ipd-admin-dosen-update')->via(['POST']);;

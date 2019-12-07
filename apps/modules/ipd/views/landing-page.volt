@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <!-- Sign In -->
-                    <a class="block block-link-shadow" href="op_auth_signin.html">
+                    <a class="block block-link-shadow" href="{{ url(['for': 'ipd-admin-dosen-list']) }}">
                         <div class="block-content text-center">
                             <div class="py-20">
                                 <p class="mb-10">

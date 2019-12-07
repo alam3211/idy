@@ -33,49 +33,4 @@ class IpdController extends Controller
         $this->view->pick('landing-page');
         return;
     }
-
-    public function addPostAction(){
-        $isi        = $this->request->getPost('isi');
-        $isiInggris = $this->request->getPost('isiInggris');
-
-        $jawaban_collection         = $this->request->getPost('jawaban');
-        $jawabanInggris_collection  = $this->request->getPost('jawabanInggris');
-        $bobot_collection           = $this->request->getPost('bobot');
-
-        $request = new CreatePertanyaanKuisionerRequest($isi, $isiInggris);
-        
-        try{
-            $respond = $this->createPertanyaanKuisionerService->execute($request);
-            if(!is_null($respond->pertanyaanKuisioner)){
-                foreach($jawaban_collection as $key => $item){
-                    //these collection must have same length
-                    $jawabanRequest = new CreateJawabanKuisionerRequest($item, $jawabanInggris_collection[$key], $bobot_collection[$key], $respond->pertanyaanKuisioner);
-
-                    $jawabanRespond = $this->createJawabanKuisionerService->execute($jawabanRequest);
-
-                    if(!is_null($jawabanRespond->jawabanKuisioner)){
-                        $respond->pertanyaanKuisioner->addJawaban($jawabanRespond->jawabanKuisioner);
-                    }
-                }
-            }
-            return $this->response->redirect('/');
-        }catch(Exception $e){
-
-        }
-    }
-
-    public function listAction(){
-        $respond = $this->viewAllPertanyaanJawabanService->execute();
-        dd($respond);
-    }
-
-    public function editAction(){
-        $request = new ViewPertanyaanJawabanByPertanyaanIdRequest(new PertanyaanKuisionerId($this->dispatcher->getParam('id')));
-        $respond = $this->viewPertanyaanJawabanService->execute($request);
-        dd($respond);
-    }
-
-    public function updateAction(){
-
-    }
 }

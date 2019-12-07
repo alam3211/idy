@@ -17,11 +17,11 @@
                 <!-- Page Content -->
                 <div class="content">
                     <!-- Table Sections (.js-table-sections class is initialized in Helpers.tableToolsSections()) -->
-                    <h2 class="content-heading">Dosen</h2>
+                    <h2 class="content-heading">Mata Kuliah</h2>
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">
-                                Daftar Pertanyaan Kuisioner Dosen
+                                Daftar Pertanyaan Kuisioner Mata Kuliah
                             </h3>
                         </div>
                         <div class="block-content">
