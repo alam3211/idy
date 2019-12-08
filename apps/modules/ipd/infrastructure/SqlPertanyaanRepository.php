@@ -63,10 +63,11 @@ class SqlPertanyaanRepository implements PertanyaanRepository
 
     public function pertanyaanWithJawabanByPertanyaanId(PertanyaanKuisionerId $pertanyaanId){
         $querySet = $this->db->query(
-            "SELECT p.id as pid, j.id as jid, p.isi as isi, p.isi_inggris as isi_inggris, 
+            "SELECT p.id as pid, j.id as jid, p.isi as isi, p.isi_inggris as isi_inggris, p.jenis_id as jenis_id,
                 j.jawaban as jawaban, j.jawaban_inggris as jawaban_inggris, j.bobot as bobot
             FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id 
-            WHERE p.id = ?",[
+            WHERE p.id = ?
+            ORDER BY pid,bobot",[
                 $pertanyaanId->id()
             ]
         );
@@ -76,7 +77,7 @@ class SqlPertanyaanRepository implements PertanyaanRepository
 
     public function update($pertanyaanId, $isi ,$isiInggris){
         $querySet = $this->db->execute(
-            "UPDATE FROM pertanyaan_kuisioner SET isi = ?, isiInggris = ? WHERE id = ?",[
+            "UPDATE pertanyaan_kuisioner SET isi = ?, isi_inggris = ? WHERE id = ?",[
                 $isi,
                 $isiInggris,
                 $pertanyaanId->id()
@@ -88,8 +89,8 @@ class SqlPertanyaanRepository implements PertanyaanRepository
 
     public function destroy($array_of_id){
         $querySet = $this->db->execute(
-            "DELETE FROM pertanyaan_kuisioner WHERE id = IN (?)",[
-                $array_of_id
+            "DELETE FROM pertanyaan_kuisioner WHERE id IN (?)",[
+                implode(',', $array_of_id)
             ]
         );
         $resultSet = $querySet;

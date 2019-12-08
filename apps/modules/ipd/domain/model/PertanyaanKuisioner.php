@@ -63,7 +63,7 @@ class PertanyaanKuisioner
         }
     }
 
-    public static function makePertanyaanKuisioner($isi, $isiInggris, $jenis, $jawaban = null, $id = null ){
+    public static function makePertanyaanKuisioner($isi, $isiInggris, $jenis = null, $jawaban = null, $id = null ){
         $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris,new JenisPertanyaan($jenis), $jawaban, new PertanyaanKuisionerId($id) );
         return $pertanyaanKuisioner;
     }
