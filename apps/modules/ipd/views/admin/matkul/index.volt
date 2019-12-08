@@ -2,7 +2,9 @@
 
 {% block additional_styles %}
     <style>
-
+        .hidden{
+            display:none;
+        }
     </style>
 
 {% endblock %}
@@ -16,6 +18,7 @@
 {% block content %}
                 <!-- Page Content -->
                 <div class="content">
+                    {{ flashSession.output() }}
                     <!-- Table Sections (.js-table-sections class is initialized in Helpers.tableToolsSections()) -->
                     <h2 class="content-heading">Mata Kuliah</h2>
                     <div class="block">
@@ -33,39 +36,36 @@
                                         <th class="d-none d-sm-table-cell" style="width: 20%;">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody class="js-table-sections-header show table-active">
+                                {% for index,pertanyaan in respond %}
+                                <tbody class="js-table-sections-header">
                                     <tr>
                                         <td class="text-center">
                                             <i class="fa fa-angle-right"></i>
                                         </td>
-                                        <td class="font-w600">Albert Ray</td>
+                                        <td class="font-w600">{{ pertanyaan['detail'][0]['isi'] }}</td>
                                         <td class="d-none d-sm-table-cell">
-                                            <button onclick="alert('halo')">asdasd</button>
+                                            <button class="btn btn-sm btn-outline-warning" data-toggle="click-ripple" onclick="window.location.href=`{{ url(['for': 'ipd-admin-matkul-edit','id': index])  }}`">UBAH</button>
+                                            <button class="btn btn-sm btn-outline-danger" data-toggle="click-ripple" onclick="deleteQuestion(`{{ index }}`)">HAPUS</button>
                                         </td>
                                     </tr>
                                 </tbody>
                                 <tbody>
+                                    {% for jawaban in pertanyaan['relation'] %}
                                     <tr>
                                         <td class="text-center"></td>
-                                        <td class="font-w600 text-success">+ $281,00</td>
+                                        <td class="font-w600 text-success">{{ jawaban['bobot']~") "~ jawaban['jawaban'] }}</td>
                                         <td class="d-none d-sm-table-cell"></td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-center"></td>
-                                        <td class="font-w600 text-success">+ $140,00</td>
-                                        <td class="d-none d-sm-table-cell"></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center"></td>
-                                        <td class="font-w600 text-success">+ $203,00</td>
-                                        <td class="d-none d-sm-table-cell"></td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
+                                {% endfor %}
                             </table>
                         </div>
                     </div>
                     <!-- END Table Sections -->
+                    <form method="post" action="{{ url(['for': 'ipd-admin-matkul-destroy']) }}" class="hidden" id="submitDeletion">
+                        <input type="checkboxes" id="checkedSubmit" name="ids[]">
+                    </form>
                 </div>
                 <!-- END Page Content -->
 {% endblock %}
@@ -75,5 +75,13 @@
         jQuery(function () {
             Codebase.helpers('table-tools');
         });
+
+        $("#sidebar-matkul").addClass("open");
+        $("#sidebar-matkul-list").addClass("active");
+
+        function deleteQuestion(id){
+            $("#checkedSubmit").val([id]);
+            $("#submitDeletion").submit();
+        }
     </script>
 {% endblock %}

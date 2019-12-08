@@ -139,4 +139,109 @@ class AdminController extends Controller
             $this->view->disable();
         }
     }
+
+
+    
+
+
+    public function createMatkulAction(){
+        $this->view->pick('admin/matkul/create');
+        return;
+    }
+
+    public function storeMatkulAction(){
+        $isi        = $this->request->getPost('pertanyaan');
+        $isiInggris = $this->request->getPost('question');
+
+        $jawaban_collection         = $this->request->getPost('jawaban');
+        $jawabanInggris_collection  = $this->request->getPost('answer');
+        $bobot_collection           = $this->request->getPost('bobot');
+
+        $request = new CreatePertanyaanKuisionerRequest($isi, $isiInggris, 2);
+        
+        try{
+            $respond = $this->createPertanyaanKuisionerService->execute($request);
+            if(!is_null($respond->pertanyaanKuisioner)){
+                foreach($jawaban_collection as $key => $item){
+                    //these collection must have same length
+                    $jawabanRequest = new CreateJawabanKuisionerRequest($item, $jawabanInggris_collection[$key], $bobot_collection[$key], $respond->pertanyaanKuisioner);
+
+                    $jawabanRespond = $this->createJawabanKuisionerService->execute($jawabanRequest);
+
+                    if(!is_null($jawabanRespond->jawabanKuisioner)){
+                        $respond->pertanyaanKuisioner->addJawaban($jawabanRespond->jawabanKuisioner);
+                    }
+                }
+            }
+            $this->flashSession->success('Sukses menambahkan soal!');
+            $this->response->redirect(['for'=>'ipd-admin-matkul-list']);
+            $this->view->disable();
+            return;
+        }catch(Exception $e){
+            $this->flashSession->error("Gagal menambahkan soal!");
+        }
+    }
+
+    public function listMatkulAction(){
+        $respond                = $this->viewAllPertanyaanJawabanMatkulService->execute();
+        $this->view->respond    = $respond->pertanyaan_with_jawaban;
+        $this->view->pick('admin/matkul/index');
+    }
+
+    public function editMatkulAction(){
+        $request                = new ViewPertanyaanJawabanByPertanyaanIdRequest(new PertanyaanKuisionerId($this->dispatcher->getParam('id')));
+        $respond                = $this->viewPertanyaanJawabanService->execute($request);
+        // dd($respond->pertanyaan_with_jawaban);
+        $this->view->pertanyaan = $respond->pertanyaan_with_jawaban;
+        $this->view->pick('admin/matkul/edit');
+
+    }
+
+    public function updateMatkulAction(){
+        $pertanyaanId               = $this->request->getPost('pertanyaanId');
+        $isiPertanyaan              = $this->request->getPost('pertanyaan');
+        $isiInggrisPertanyaan       = $this->request->getPost('question');
+
+        $jawabanId_collection       = $this->request->getPost('jawabanId');
+        $jawaban_collection         = $this->request->getPost('jawaban');
+        $jawabanInggris_collection  = $this->request->getPost('answer');
+        $bobot_collection           = $this->request->getPost('bobot');
+
+        $request    = new UpdatePertanyaanJawabanKuisionerRequest($pertanyaanId, 
+                                $isiPertanyaan, 
+                                $isiInggrisPertanyaan, 
+                                $jawabanId_collection, 
+                                $jawaban_collection, 
+                                $jawabanInggris_collection, 
+                                $bobot_collection 
+                            );
+        
+        $respond    = $this->updatePertanyaanJawabanKuisionerService->execute($request);
+
+        if($respond==True){
+            $this->flashSession->success('Sukses mengubah soal!');
+            $this->response->redirect(['for'=>'ipd-admin-matkul-list']);
+            $this->view->disable();
+        }else{
+            $this->flashSession->error('Sukses mengubah soal!');
+            $this->response->redirect(['for'=>'ipd-admin-matkul-list']);
+            $this->view->disable();
+        }
+    }
+
+    public function deleteMatkulAction(){
+        $id         = $this->request->getPost('ids');
+        $request    = new DeletePertanyaanJawabanKuisionerRequest($id);
+        $respond    = $this->deletePertanyaanJawabanKuisionerService->execute($request);
+
+        if($respond==True){
+            $this->flashSession->success('Sukses menghapus soal!');
+            $this->response->redirect(['for'=>'ipd-admin-matkul-list']);
+            $this->view->disable();
+        }else{
+            $this->flashSession->error('Sukses menghapus soal!');
+            $this->response->redirect(['for'=>'ipd-admin-matkul-list']);
+            $this->view->disable();
+        }
+    }
 }
