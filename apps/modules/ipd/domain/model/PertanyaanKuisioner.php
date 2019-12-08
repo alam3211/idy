@@ -10,12 +10,14 @@ class PertanyaanKuisioner
     private $isi;
     private $isiInggris;
     private $jawaban = array();
-    
-    public function __construct($isi, $isiInggris, JawabanKuisinoner $jawaban = null, PertanyaanKuisionerId $id)
+    private $jenis;
+
+    public function __construct($isi, $isiInggris,JenisPertanyaan $jenis, JawabanKuisinoner $jawaban = null, PertanyaanKuisionerId $id)
     {
         $this->id           = $id;
         $this->isi          = $isi;
         $this->isiInggris   = $isiInggris;
+        $this->jenis        = $jenis;
     }
 
     public function id()
@@ -41,6 +43,10 @@ class PertanyaanKuisioner
         $this->isiInggris = $isiInggris;
     }
 
+    public function jenis(){
+        return $this->jenis;
+    }
+
     public function addJawaban($newJawaban){
         
         $existed = false;
@@ -57,8 +63,8 @@ class PertanyaanKuisioner
         }
     }
 
-    public static function makePertanyaanKuisioner($isi, $isiInggris, $jawaban = null, $id = null){
-        $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris, $jawaban, new PertanyaanKuisionerId($id));
+    public static function makePertanyaanKuisioner($isi, $isiInggris, $jenis, $jawaban = null, $id = null ){
+        $pertanyaanKuisioner = new PertanyaanKuisioner($isi, $isiInggris,new JenisPertanyaan($jenis), $jawaban, new PertanyaanKuisionerId($id) );
         return $pertanyaanKuisioner;
     }
 }

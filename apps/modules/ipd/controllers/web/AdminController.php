@@ -6,7 +6,8 @@ use Idy\Ipd\Application\CreateJawabanKuisionerRequest;
 use Idy\Ipd\Application\CreateJawabanKuisionerService;
 use Idy\Ipd\Application\CreatePertanyaanKuisionerService;
 use Idy\Ipd\Application\CreatePertanyaanKuisionerRequest;
-use Idy\Ipd\Application\ViewAllPertanyaanJawabanService;
+use Idy\Ipd\Application\ViewAllPertanyaanJawabanDosenService;
+use Idy\Ipd\Application\ViewAllPertanyaanJawabanMatkulService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdRequest;
 use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
@@ -15,21 +16,27 @@ use Phalcon\Mvc\Controller;
 class AdminController extends Controller
 {
 
-    private $kuisionerRepository;
+    private $pertanyaanRepository;
     private $jawabanRepository;
     private $createPertanyaanKuisionerService;
     private $createJawabanKuisionerService;
     
     public function initialize(){
-        $this->kuisionerRepository              = $this->di->getShared('sql_ipd_repository');
+        $this->pertanyaanRepository              = $this->di->getShared('sql_pertanyaan_repository');
         $this->jawabanRepository                = $this->di->getShared('sql_jawaban_repository');
-        $this->createPertanyaanKuisionerService = new  CreatePertanyaanKuisionerService($this->kuisionerRepository);
+        $this->createPertanyaanKuisionerService = new  CreatePertanyaanKuisionerService($this->pertanyaanRepository);
         $this->createJawabanKuisionerService    = new CreateJawabanKuisionerService($this->jawabanRepository);
-        $this->viewAllPertanyaanJawabanService  = new ViewAllPertanyaanJawabanService($this->kuisionerRepository);
-        $this->viewPertanyaanJawabanService     = new ViewPertanyaanJawabanByPertanyaanIdService($this->kuisionerRepository);
+        $this->viewAllPertanyaanJawabanDosenService  = new ViewAllPertanyaanJawabanDosenService($this->pertanyaanRepository);
+        $this->viewAllPertanyaanJawabanMatkulService  = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
+        $this->viewPertanyaanJawabanService     = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
     }
 
-    public function addDosenAction(){
+    public function createDosenAction(){
+        $this->view->pick('admin/dosen/create');
+        return;
+    }
+
+    public function storeDosenAction(){
         $isi        = $this->request->getPost('isi');
         $isiInggris = $this->request->getPost('isiInggris');
 
@@ -37,7 +44,7 @@ class AdminController extends Controller
         $jawabanInggris_collection  = $this->request->getPost('jawabanInggris');
         $bobot_collection           = $this->request->getPost('bobot');
 
-        $request = new CreatePertanyaanKuisionerRequest($isi, $isiInggris);
+        $request = new CreatePertanyaanKuisionerRequest($isi, $isiInggris, 1);
         
         try{
             $respond = $this->createPertanyaanKuisionerService->execute($request);
@@ -60,9 +67,8 @@ class AdminController extends Controller
     }
 
     public function listDosenAction(){
-        $respond = $this->viewAllPertanyaanJawabanService->execute();
+        $respond = $this->viewAllPertanyaanJawabanDosenService->execute();
         $this->view->respond = $respond->pertanyaan_with_jawaban;
-        // dd($respond->pertanyaan_with_jawaban);
         $this->view->pick('admin/dosen/index');
     }
 

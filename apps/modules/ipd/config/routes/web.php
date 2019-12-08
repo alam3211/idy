@@ -9,11 +9,18 @@ $router->addGet('/', [
     'action' => 'index'
 ]);
 
+$router->add('/ipd/admin/dosen/create',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'createDosen'
+])->setName('ipd-admin-dosen-create');
+
 $router->add('/ipd/admin/dosen/store',[
     'namespace' => $namespace,
     'module' => 'ipd',
     'controller' => 'admin',
-    'action' => 'addDosen'
+    'action' => 'storeDosen'
 ])->setName('ipd-admin-dosen-store')->via(['POST']);;
 
 $router->add('/ipd/admin/dosen/list',[
