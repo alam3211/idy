@@ -61,8 +61,8 @@ class AdminController extends Controller
 
     public function listDosenAction(){
         $respond = $this->viewAllPertanyaanJawabanService->execute();
-        $this->view->respond = $respond;
-        // dd($respond);
+        $this->view->respond = $respond->pertanyaan_with_jawaban;
+        // dd($respond->pertanyaan_with_jawaban);
         $this->view->pick('admin/dosen/index');
     }
 

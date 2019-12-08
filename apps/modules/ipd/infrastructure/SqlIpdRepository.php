@@ -47,11 +47,10 @@ class SqlIpdRepository implements KuisionerRepository
         $querySet = $this->db->query(
             "SELECT p.id as pid, j.id as jid, p.isi as isi, p.isi_inggris as isi_inggris, 
                 j.jawaban as jawaban, j.jawaban_inggris as jawaban_inggris, j.bobot as bobot
-             FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id"
+             FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id ORDER BY pid,bobot"
         );
         $resultSet = $querySet->fetchAll();
         
-
         return $this->groupPertanyaanWithJawaban($resultSet);
     }
 
@@ -95,11 +94,12 @@ class SqlIpdRepository implements KuisionerRepository
 
         foreach($query_result as $item){
             if(!array_key_exists($item['pid'],$temp)){
+                $temp[$item['pid']]['detail'] = array();
                 $temp[$item['pid']]['detail'][] = array(
                                                     'isi'=>$item['isi'],
                                                     'isiInggris' => $item['isi_inggris']
                                                     );
-
+                $temp[$item['pid']]['relation'] = array();
                 $temp[$item['pid']]['relation'][]  = array(
                                                         'id' => $item['jid'],
                                                         'jawaban' => $item['jawaban'],
@@ -116,18 +116,12 @@ class SqlIpdRepository implements KuisionerRepository
             }
         }
 
-        $pertanyaan_with_jawaban_collection = array();
-
-        foreach($temp as $key => $item){
-            $pertanyaan = PertanyaanKuisioner::makePertanyaanKuisioner($item['detail'][0]['isi'], $item['detail'][0]['isiInggris'],null,$key);
-            foreach($item['relation'] as $key2 => $jawaban){
-                $jawaban = JawabanKuisioner::makeJawabanKuisioner($jawaban['jawaban'],$jawaban['jawabanInggris'],$jawaban['bobot'],$jawaban['id']);
-                $pertanyaan->addJawaban($jawaban);
-            }
-            array_push($pertanyaan_with_jawaban_collection,$pertanyaan);
-        }
-
-        return $pertanyaan_with_jawaban_collection;
+        return $temp;
     }
+
+    public function cmp($a, $b) {
+        return strcmp($a['bobot'], $b['bobot']);
+    }
+    
 
 }

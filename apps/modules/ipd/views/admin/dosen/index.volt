@@ -33,24 +33,23 @@
                                         <th class="d-none d-sm-table-cell" style="width: 20%;">Aksi</th>
                                     </tr>
                                 </thead>
-                                {% for pertanyaan in respond %}
-                                {{ pertanyaan }}
+                                {% for index,pertanyaan in respond %}
                                 <tbody class="js-table-sections-header show table-active">
                                     <tr>
                                         <td class="text-center">
                                             <i class="fa fa-angle-right"></i>
                                         </td>
-                                        <td class="font-w600">{{ pertanyaan.isi }}</td>
+                                        <td class="font-w600">{{ pertanyaan['detail'][0]['isi'] }}</td>
                                         <td class="d-none d-sm-table-cell">
                                             <button onclick="alert('halo')">asdasd</button>
                                         </td>
                                     </tr>
                                 </tbody>
                                 <tbody>
-                                    {% for jawaban in respond.jawaban %}
+                                    {% for jawaban in pertanyaan['relation'] %}
                                     <tr>
                                         <td class="text-center"></td>
-                                        <td class="font-w600 text-success">jawaban.jawaban</td>
+                                        <td class="font-w600 text-success">{{ jawaban['bobot']~") "~ jawaban['jawaban'] }}</td>
                                         <td class="d-none d-sm-table-cell"></td>
                                     </tr>
                                     {% endfor %}
