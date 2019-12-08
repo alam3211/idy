@@ -22,7 +22,7 @@ class CreatePertanyaanKuisionerService
             $pertanyaanKuisioner = PertanyaanKuisioner::makePertanyaanKuisioner(
                 $request->isi, 
                 $request->isiInggris,
-                $request->jenis,
+                $request->jenis
             );
             $this->pertanyaanRepository->save($pertanyaanKuisioner);
             $response = new PertanyaanKuisionerRespond($pertanyaanKuisioner, null);

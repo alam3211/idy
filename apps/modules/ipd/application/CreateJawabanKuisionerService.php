@@ -22,7 +22,7 @@ class CreateJawabanKuisionerService
             $jawabanKuisioner = JawabanKuisioner::makeJawabanKuisioner(
                 $request->jawaban, 
                 $request->jawabanInggris,
-                $request->bobot,
+                $request->bobot
             );
             $this->jawabanRepository->save($jawabanKuisioner,$request->pertanyaanKuisioner);
             $response = new JawabanKuisionerRespond($jawabanKuisioner, null);
