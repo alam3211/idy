@@ -10,4 +10,8 @@ interface JawabanRepository
     public function save(JawabanKuisioner $jawabanKuisioner, PertanyaanKuisioner $pertanyaanKuisioner);
     
     public function byPertanyaan(PertanyaanKuisioner $pertanyaanKuisioner);
+
+    public function update(JawabanKuisioner $jawabanKuisioner);
+
+    public function destroy($array_of_id);
 }
