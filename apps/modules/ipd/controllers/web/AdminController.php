@@ -6,6 +6,8 @@ use Idy\Ipd\Application\CreateJawabanKuisionerRequest;
 use Idy\Ipd\Application\CreateJawabanKuisionerService;
 use Idy\Ipd\Application\CreatePertanyaanKuisionerService;
 use Idy\Ipd\Application\CreatePertanyaanKuisionerRequest;
+use Idy\Ipd\Application\DeletePertanyaanJawabanKuisionerRequest;
+use Idy\Ipd\Application\DeletePertanyaanJawabanKuisionerService;
 use Idy\Ipd\Application\UpdatePertanyaanJawabanKuisionerRequest;
 use Idy\Ipd\Application\UpdatePertanyaanJawabanKuisionerService;
 use Idy\Ipd\Application\ViewAllPertanyaanJawabanDosenService;
@@ -23,6 +25,7 @@ class AdminController extends Controller
     private $createPertanyaanKuisionerService;
     private $createJawabanKuisionerService;
     private $updatePertanyaanJawabanKuisionerService;
+    private $deletePertanyaanJawabanKuisionerService;
 
     public function initialize(){
         $this->pertanyaanRepository                     = $this->di->getShared('sql_pertanyaan_repository');
@@ -33,6 +36,7 @@ class AdminController extends Controller
         $this->viewAllPertanyaanJawabanMatkulService    = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
         $this->viewPertanyaanJawabanService             = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
         $this->updatePertanyaanJawabanKuisionerService  = new UpdatePertanyaanJawabanKuisionerService($this->pertanyaanRepository, $this->jawabanRepository);
+        $this->deletePertanyaanJawabanKuisionerService  = new DeletePertanyaanJawabanKuisionerService($this->pertanyaanRepository);
     }
 
     public function createDosenAction(){
@@ -115,6 +119,22 @@ class AdminController extends Controller
             $this->view->disable();
         }else{
             $this->flashSession->error('Sukses mengubah soal!');
+            $this->response->redirect(['for'=>'ipd-admin-dosen-list']);
+            $this->view->disable();
+        }
+    }
+
+    public function deleteDosenAction(){
+        $id         = $this->request->getPost('ids');
+        $request    = new DeletePertanyaanJawabanKuisionerRequest($id);
+        $respond    = $this->deletePertanyaanJawabanKuisionerService->execute($request);
+
+        if($respond==True){
+            $this->flashSession->success('Sukses menghapus soal!');
+            $this->response->redirect(['for'=>'ipd-admin-dosen-list']);
+            $this->view->disable();
+        }else{
+            $this->flashSession->error('Sukses menghapus soal!');
             $this->response->redirect(['for'=>'ipd-admin-dosen-list']);
             $this->view->disable();
         }

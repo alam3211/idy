@@ -97,6 +97,22 @@ class SqlPertanyaanRepository implements PertanyaanRepository
         return $resultSet;
     }
 
+    public function destroyWithJawaban($array_of_id){
+        $querySet = $this->db->execute(
+            "DELETE FROM pertanyaan_kuisioner WHERE id IN (?)",[
+                implode(',', $array_of_id)
+            ]
+        );
+        
+        $querySet = $this->db->execute(
+            "DELETE FROM jawaban_kuisioner WHERE pertanyaan_id IN (?)",[
+                implode(',', $array_of_id)
+            ]
+        );
+        $resultSet = $querySet;
+        return $resultSet;
+    }
+
     public function groupPertanyaanWithJawaban($query_result){
         $temp = array();
 

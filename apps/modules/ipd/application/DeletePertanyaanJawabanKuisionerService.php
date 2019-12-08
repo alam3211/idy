@@ -4,23 +4,23 @@ namespace Idy\Ipd\Application;
 
 use Idy\Ipd\Domain\Model\PertanyaanRepository;
 
-use Idy\Ipd\Application\DeletePertanyaanKuisionerRequest;
+use Idy\Ipd\Application\DeletePertanyaanJawabanKuisionerRequest;
 
-class DeletePertanyaanKuisionerService
+class DeletePertanyaanJawabanKuisionerService
 {
     private $pertanyaanRepository;
+    private $jawabanRepository;
 
     public function __construct(PertanyaanRepository $pertanyaanRepository)
     {
         $this->pertanyaanRepository = $pertanyaanRepository;
     }
 
-    public function execute(DeletePertanyaanKuisionerRequest $request)
+    public function execute(DeletePertanyaanJawabanKuisionerRequest $request)
     {
         try {
-            $Delete = $this->pertanyaanRepository->destroy($request->array_of_id);
-            $response = new PertanyaanKuisionerRespond($Delete, null);
-            return $response;
+            $delete = $this->pertanyaanRepository->destroyWithJawaban($request->array_of_id);
+            return $delete;
         } catch (Execption $e) {
             return new PertanyaanKuisionerRespond(null, $e);
         }

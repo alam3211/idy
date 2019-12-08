@@ -21,7 +21,7 @@ $router->add('/ipd/admin/dosen/store',[
     'module' => 'ipd',
     'controller' => 'admin',
     'action' => 'storeDosen'
-])->setName('ipd-admin-dosen-store')->via(['POST']);;
+])->setName('ipd-admin-dosen-store')->via(['POST']);
 
 $router->add('/ipd/admin/dosen/list',[
     'namespace' => $namespace,
@@ -42,4 +42,11 @@ $router->add('/ipd/admin/dosen/update',[
     'module' => 'ipd',
     'controller' => 'admin',
     'action' => 'updateDosen'
-])->setName('ipd-admin-dosen-update')->via(['POST']);;
+])->setName('ipd-admin-dosen-update')->via(['POST']);
+
+$router->add('/ipd/admin/dosen/delete',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'deleteDosen'
+])->setName('ipd-admin-dosen-destroy')->via(['POST']);
