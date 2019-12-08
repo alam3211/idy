@@ -6,6 +6,7 @@ use Phalcon\Di;
 use Idy\Ipd\Domain\Model\PertanyaanKuisioner;
 use Idy\Ipd\Domain\Model\JawabanKuisioner;
 use Idy\Ipd\Domain\Model\JawabanRepository;
+use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 
 class SqlJawabanRepository implements JawabanRepository
 {
@@ -32,21 +33,28 @@ class SqlJawabanRepository implements JawabanRepository
         return $resultSet;
     }
 
-    public function byPertanyaan(PertanyaanKuisioner $pertanyaanKuisioner)
+    public function GetIdsbyPertanyaan(PertanyaanKuisionerId $pertanyaanKuisionerId)
     {
         $querySet = $this->db->query(
-            "SELECT * FROM jawaban_kuisioner WHERE pertanyaanId = ? ",
+            "SELECT id FROM jawaban_kuisioner WHERE pertanyaan_id = ? ",
             [
-                $pertanyaanKuisioner->id
+                $pertanyaanKuisionerId->id()
             ]
         );
         $resultSet = $querySet->fetchAll();
-        return $resultSet;
+
+        $ids = array();
+
+        foreach($resultSet as $item){
+            array_push($ids, $item['id']);
+        }
+
+        return $ids;
     }
 
     public function update($jawabanKuisioner){
         $querySet = $this->db->execute(
-            "UPDATE FROM jawaban_kuisioner SET jawaban = ?, jawabanInggris = ?, bobot = ? WHERE id = ?",[
+            "UPDATE jawaban_kuisioner SET jawaban = ?, jawaban_inggris = ?, bobot = ? WHERE id = ?",[
                 $jawabanKuisioner->jawaban(),
                 $jawabanKuisioner->jawabanInggris(),
                 $jawabanKuisioner->bobot(),
@@ -59,8 +67,8 @@ class SqlJawabanRepository implements JawabanRepository
 
     public function destroy($array_of_id){
         $querySet = $this->db->execute(
-            "DELETE FROM jawaban_kuisioner WHERE id = IN (?)",[
-                $array_of_id
+            "DELETE FROM jawaban_kuisioner WHERE id IN (?)",[
+                implode(',', $array_of_id)
             ]
         );
         $resultSet = $querySet;

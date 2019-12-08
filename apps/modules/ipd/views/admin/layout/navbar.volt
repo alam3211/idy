@@ -25,10 +25,10 @@
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Kuisioner</span></a>
             <ul>
                 <li>
-                    <a id="sidebar-matkul-create" href="be_blocks.html">Tambah Soal & Jawaban</a>
+                    <a id="sidebar-matkul-create" href="{{ url(['for':'ipd-admin-matkul-create']) }}">Tambah Soal & Jawaban</a>
                 </li>
                 <li>
-                    <a id="sidebar-matkul-list" href="be_blocks_tiles.html">Daftar Soal & Jawaban</a>
+                    <a id="sidebar-matkul-list" href="{{ url(['for':'ipd-admin-matkul-list']) }}">Daftar Soal & Jawaban</a>
                 </li>
             </ul>
         </li>    

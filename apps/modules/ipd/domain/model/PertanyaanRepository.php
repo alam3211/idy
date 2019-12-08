@@ -19,4 +19,6 @@ interface PertanyaanRepository
     public function update(PertanyaanKuisionerId $pertanyaanId, $isi, $isiInggris);
 
     public function destroy($array_of_id);
+    
+    public function destroyWithJawaban($array_of_id);
 }

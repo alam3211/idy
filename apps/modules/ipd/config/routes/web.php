@@ -21,7 +21,7 @@ $router->add('/ipd/admin/dosen/store',[
     'module' => 'ipd',
     'controller' => 'admin',
     'action' => 'storeDosen'
-])->setName('ipd-admin-dosen-store')->via(['POST']);;
+])->setName('ipd-admin-dosen-store')->via(['POST']);
 
 $router->add('/ipd/admin/dosen/list',[
     'namespace' => $namespace,
@@ -42,4 +42,54 @@ $router->add('/ipd/admin/dosen/update',[
     'module' => 'ipd',
     'controller' => 'admin',
     'action' => 'updateDosen'
-])->setName('ipd-admin-dosen-update')->via(['POST']);;
+])->setName('ipd-admin-dosen-update')->via(['POST']);
+
+$router->add('/ipd/admin/dosen/delete',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'deleteDosen'
+])->setName('ipd-admin-dosen-destroy')->via(['POST']);
+
+
+$router->add('/ipd/admin/matkul/create',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'createMatkul'
+])->setName('ipd-admin-matkul-create');
+
+$router->add('/ipd/admin/matkul/store',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'storeMatkul'
+])->setName('ipd-admin-matkul-store')->via(['POST']);
+
+$router->add('/ipd/admin/matkul/list',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'listMatkul'
+])->setName('ipd-admin-matkul-list');
+
+$router->add('/ipd/admin/matkul/edit/{id}',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'editMatkul'
+])->setName('ipd-admin-matkul-edit');
+
+$router->add('/ipd/admin/matkul/update',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'updateMatkul'
+])->setName('ipd-admin-matkul-update')->via(['POST']);
+
+$router->add('/ipd/admin/matkul/delete',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'deleteMatkul'
+])->setName('ipd-admin-matkul-destroy')->via(['POST']);
