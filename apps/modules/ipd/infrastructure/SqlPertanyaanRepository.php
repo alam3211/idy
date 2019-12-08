@@ -27,7 +27,7 @@ class SqlPertanyaanRepository implements PertanyaanRepository
                     $pertanyaanKuisioner->id()->id(),
                     $pertanyaanKuisioner->jenis()->id(),
                     $pertanyaanKuisioner->isi(),
-                    $pertanyaanKuisioner->isiInggris(),
+                    $pertanyaanKuisioner->isiInggris()
                 ]
             );
         $resultSet = $querySet;

@@ -26,7 +26,7 @@ class SqlJawabanRepository implements JawabanRepository
                     $pertanyaanKuisioner->id()->id(),
                     $jawabanKuisioner->jawaban(),
                     $jawabanKuisioner->jawabanInggris(),
-                    $jawabanKuisioner->bobot(),
+                    $jawabanKuisioner->bobot()
                 ]
             );
         $resultSet = $querySet;

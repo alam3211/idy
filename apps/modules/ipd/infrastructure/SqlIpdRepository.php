@@ -25,7 +25,7 @@ class SqlIpdRepository implements KuisionerRepository
                 [
                     $pertanyaanKuisioner->id()->id(),
                     $pertanyaanKuisioner->isi(),
-                    $pertanyaanKuisioner->isiInggris(),
+                    $pertanyaanKuisioner->isiInggris()
                 ]
             );
         $resultSet = $querySet;
