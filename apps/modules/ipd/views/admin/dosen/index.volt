@@ -2,7 +2,9 @@
 
 {% block additional_styles %}
     <style>
-
+        .hidden{
+            display:none;
+        }
     </style>
 
 {% endblock %}
@@ -43,6 +45,7 @@
                                         <td class="font-w600">{{ pertanyaan['detail'][0]['isi'] }}</td>
                                         <td class="d-none d-sm-table-cell">
                                             <button class="btn btn-sm btn-outline-warning" data-toggle="click-ripple" onclick="window.location.href=`{{ url(['for': 'ipd-admin-dosen-edit','id': index])  }}`">UBAH</button>
+                                            <button class="btn btn-sm btn-outline-danger" data-toggle="click-ripple" onclick="deleteQuestion(`{{ index }}`)">HAPUS</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -60,6 +63,9 @@
                         </div>
                     </div>
                     <!-- END Table Sections -->
+                    <form method="post" action="{{ url(['for': 'ipd-admin-dosen-destroy']) }}" class="hidden" id="submitDeletion">
+                        <input type="checkboxes" id="checkedSubmit" name="ids[]">
+                    </form>
                 </div>
                 <!-- END Page Content -->
 {% endblock %}
@@ -72,5 +78,10 @@
 
         $("#sidebar-dosen").addClass("open");
         $("#sidebar-dosen-list").addClass("active");
+
+        function deleteQuestion(id){
+            $("#checkedSubmit").val([id]);
+            $("#submitDeletion").submit();
+        }
     </script>
 {% endblock %}
