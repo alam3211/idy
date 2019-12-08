@@ -20,11 +20,11 @@
                 <div class="content">
                     {{ flashSession.output() }}
                     <!-- Table Sections (.js-table-sections class is initialized in Helpers.tableToolsSections()) -->
-                    <h2 class="content-heading">Kuisioner / {{ title }}</h2>
+                    <h2 class="content-heading">Kuisioner / <b>{{ title }}</b></h2>
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">
-                                Daftar Pertanyaan Kuisioner {{ title }}
+                                Daftar Pertanyaan Kuisioner <b>{{ title }}</b>
                             </h3>
                         </div>
                         <div class="block-content">
