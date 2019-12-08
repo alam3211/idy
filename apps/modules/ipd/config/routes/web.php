@@ -7,7 +7,28 @@ $router->addGet('/', [
     'module' => 'ipd',
     'controller' => 'ipd',
     'action' => 'index'
-]);
+])->setname('home');
+
+$router->add('/ipd/dosen',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'dosen',
+    'action' => 'index'
+])->setName('ipd-dosen');
+
+$router->add('/ipd/dosen/kuisioner/matkul',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'dosen',
+    'action' => 'indexKuisionerMatkul'
+])->setName('ipd-dosen-kuisioner-matkul');
+
+$router->add('/ipd/dosen/kuisioner/dosen',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'dosen',
+    'action' => 'indexKuisionerDosen'
+])->setName('ipd-dosen-kuisioner-dosen');
 
 $router->add('/ipd/admin/dosen/create',[
     'namespace' => $namespace,

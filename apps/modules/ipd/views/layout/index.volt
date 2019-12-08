@@ -42,7 +42,7 @@
                 
                                 <!-- Logo -->
                                 <div class="content-header-item">
-                                    <a class="link-effect font-w700" href="index.html">
+                                    <a class="link-effect font-w700" href="{{ url(['for': 'home']) }}">
                                         <i class="si si-fire text-primary"></i>
                                         <span class="font-size-xl text-dual-primary-dark">KPL </span><span class="font-size-xl text-primary">IPD</span>
                                     </a>

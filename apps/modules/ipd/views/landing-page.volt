@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-4">
                     <!-- Register -->
-                    <a class="block block-link-shadow" href="op_auth_signup.html">
+                    <a class="block block-link-shadow" href="{{ url(['for': 'ipd-dosen']) }}">
                         <div class="block-content text-center">
                             <div class="py-20">
                                 <p class="mb-10">
