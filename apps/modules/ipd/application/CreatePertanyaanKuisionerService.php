@@ -2,18 +2,18 @@
 
 namespace Idy\Ipd\Application;
 
-use Idy\Ipd\Domain\Model\KuisionerRepository;
+use Idy\Ipd\Domain\Model\PertanyaanRepository;
 use Idy\Ipd\Domain\Model\PertanyaanKuisioner;
 
 use Idy\Ipd\Application\CreatePertanyaanKuisionerRequest;
 
 class CreatePertanyaanKuisionerService
 {
-    private $kuisionerRepository;
+    private $pertanyaanRepository;
 
-    public function __construct(KuisionerRepository $kuisionerRepository)
+    public function __construct(PertanyaanRepository $pertanyaanRepository)
     {
-        $this->kuisionerRepository = $kuisionerRepository;
+        $this->pertanyaanRepository = $pertanyaanRepository;
     }
 
     public function execute(CreatePertanyaanKuisionerRequest $request)
@@ -21,9 +21,10 @@ class CreatePertanyaanKuisionerService
         try {
             $pertanyaanKuisioner = PertanyaanKuisioner::makePertanyaanKuisioner(
                 $request->isi, 
-                $request->isiInggris
+                $request->isiInggris,
+                $request->jenis,
             );
-            $this->kuisionerRepository->save($pertanyaanKuisioner);
+            $this->pertanyaanRepository->save($pertanyaanKuisioner);
             $response = new PertanyaanKuisionerRespond($pertanyaanKuisioner, null);
             return $response;
         } catch (Execption $e) {

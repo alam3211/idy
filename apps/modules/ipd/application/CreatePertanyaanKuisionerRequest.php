@@ -6,11 +6,13 @@ class CreatePertanyaanKuisionerRequest
 {
     public $isi;
     public $isiInggris;
-
-    public function __construct($isi, $isiInggris)
+    public $jenis;
+    
+    public function __construct($isi, $isiInggris, $jenis)
     {
         $this->isi          = $isi;
         $this->isiInggris   = $isiInggris;
+        $this->jenis        = $jenis;
     }
 
 }

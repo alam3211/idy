@@ -34,14 +34,14 @@
                                     </tr>
                                 </thead>
                                 {% for index,pertanyaan in respond %}
-                                <tbody class="js-table-sections-header show table-active">
+                                <tbody class="js-table-sections-header">
                                     <tr>
                                         <td class="text-center">
                                             <i class="fa fa-angle-right"></i>
                                         </td>
                                         <td class="font-w600">{{ pertanyaan['detail'][0]['isi'] }}</td>
                                         <td class="d-none d-sm-table-cell">
-                                            <button onclick="alert('halo')">asdasd</button>
+                                            <button class="btn btn-sm btn-outline-warning" data-toggle="click-ripple" onclick="window.location.href=`{{ url(['for': 'ipd-admin-dosen-edit','id': index])  }}`">UBAH</button>
                                         </td>
                                     </tr>
                                 </tbody>

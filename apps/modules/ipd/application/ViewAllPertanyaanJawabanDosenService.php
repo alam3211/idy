@@ -4,9 +4,10 @@ namespace Idy\Ipd\Application;
 
 
 use Idy\Ipd\Application\ViewPertanyaanJawabanRespond;
+use Idy\Ipd\Domain\Model\JenisPertanyaan;
 use Idy\Ipd\Domain\Model\PertanyaanRepository;
 
-class ViewPertanyaanJawabanByPertanyaanIdService{
+class ViewAllPertanyaanJawabanDosenService{
 
     private $pertanyaanRepository;
 
@@ -15,9 +16,10 @@ class ViewPertanyaanJawabanByPertanyaanIdService{
         $this->pertanyaanRepository = $pertanyaanRepository;
     }
 
-    public function execute(ViewPertanyaanJawabanByPertanyaanIdRequest $request){
+    public function execute(){
         try{
-            $kuisioner_with_jawaban = $this->pertanyaanRepository->pertanyaanWithJawabanByPertanyaanId($request->pertanyaanKuisionerId);
+
+            $kuisioner_with_jawaban = $this->pertanyaanRepository->allPertanyaanWithJawaban(new JenisPertanyaan(1));
             return new ViewPertanyaanJawabanRespond($kuisioner_with_jawaban,null);
         }catch(Execption $e){
             return new ViewPertanyaanJawabanRespond(null, $e);
