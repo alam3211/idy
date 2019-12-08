@@ -49,7 +49,12 @@ class SqlPertanyaanRepository implements PertanyaanRepository
         $querySet = $this->db->query(
             "SELECT p.id as pid, j.id as jid, p.isi as isi, p.isi_inggris as isi_inggris, 
                 j.jawaban as jawaban, j.jawaban_inggris as jawaban_inggris, j.bobot as bobot
-             FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id ORDER BY pid,bobot"
+             FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id 
+             WHERE p.jenis_id = ?
+             ORDER BY pid,bobot",
+             [
+                 $jenis->id()
+             ]
         );
         $resultSet = $querySet->fetchAll();
         
