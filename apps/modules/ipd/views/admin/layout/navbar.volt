@@ -6,14 +6,14 @@
         <li>
             <a href="#"><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Dosen</span></a>
         </li>
-        <li>
+        <li id="sidebar-dosen">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Kuisioner</span></a>
             <ul>
                 <li>
-                    <a href="be_blocks.html">Tambah Soal & Jawaban</a>
+                    <a id="sidebar-dosen-create" href="{{ url(['for':'ipd-admin-dosen-create']) }}">Tambah Soal & Jawaban</a>
                 </li>
                 <li>
-                    <a href="be_blocks_tiles.html">Daftar Soal & Jawaban</a>
+                    <a id="sidebar-dosen-list" href="{{ url(['for':'ipd-admin-dosen-list']) }}">Daftar Soal & Jawaban</a>
                 </li>
             </ul>
         </li>
@@ -21,14 +21,14 @@
         <li>
             <a href="#"><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Matkul</span></a>
         </li>
-        <li>
+        <li id="sidebar-matkul" >
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Kuisioner</span></a>
             <ul>
                 <li>
-                    <a href="be_blocks.html">Tambah Soal & Jawaban</a>
+                    <a id="sidebar-matkul-create" href="be_blocks.html">Tambah Soal & Jawaban</a>
                 </li>
                 <li>
-                    <a href="be_blocks_tiles.html">Daftar Soal & Jawaban</a>
+                    <a id="sidebar-matkul-list" href="be_blocks_tiles.html">Daftar Soal & Jawaban</a>
                 </li>
             </ul>
         </li>    

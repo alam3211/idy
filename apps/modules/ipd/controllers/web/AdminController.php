@@ -37,11 +37,11 @@ class AdminController extends Controller
     }
 
     public function storeDosenAction(){
-        $isi        = $this->request->getPost('isi');
-        $isiInggris = $this->request->getPost('isiInggris');
+        $isi        = $this->request->getPost('pertanyaan');
+        $isiInggris = $this->request->getPost('question');
 
         $jawaban_collection         = $this->request->getPost('jawaban');
-        $jawabanInggris_collection  = $this->request->getPost('jawabanInggris');
+        $jawabanInggris_collection  = $this->request->getPost('answer');
         $bobot_collection           = $this->request->getPost('bobot');
 
         $request = new CreatePertanyaanKuisionerRequest($isi, $isiInggris, 1);
@@ -60,9 +60,12 @@ class AdminController extends Controller
                     }
                 }
             }
-            return $this->response->redirect('/');
+            $this->flashSession->success('Sukses menambahkan soal!');
+            $this->response->redirect(['for'=>'ipd-admin-dosen-list']);
+            $this->view->disable();
+            return;
         }catch(Exception $e){
-
+            $this->flashSession->error("Gagal menambahkan soal!");
         }
     }
 

@@ -27,4 +27,12 @@
 <script src="{{ url('assets/js/codebase.core.min.js') }}"></script>
 <script src="{{ url('assets/js/codebase.app.min.js') }}"></script>
 
+
+<!-- 
+    Vue Js
+
+    Remove "-devel" if the apps is going to be deployed. It'll change into Vue production mode!
+ -->
+<script src="{{ url('assets/js/vue-devel.js') }}"></script>
+
 <!-- Page JS Helpers (Table Tools helper) -->

@@ -16,6 +16,7 @@
 {% block content %}
                 <!-- Page Content -->
                 <div class="content">
+                    {{ flashSession.output() }}
                     <!-- Table Sections (.js-table-sections class is initialized in Helpers.tableToolsSections()) -->
                     <h2 class="content-heading">Dosen</h2>
                     <div class="block">
@@ -68,5 +69,8 @@
         jQuery(function () {
             Codebase.helpers('table-tools');
         });
+
+        $("#sidebar-dosen").addClass("open");
+        $("#sidebar-dosen-list").addClass("active");
     </script>
 {% endblock %}
