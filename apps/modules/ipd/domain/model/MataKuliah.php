@@ -7,12 +7,14 @@ class MataKuliah
     private $id;
     private $namaMataKuliah;
     private $kode;
-    
-    public function __construct($id = null, $namaMataKuliah, $kode)
+    private $sks;
+
+    public function __construct($id = null, $namaMataKuliah, $kode, $sks)
     {
         $this->id = $id;
         $this->namaMataKuliah = $namaMataKuliah;
         $this->kode = $kode;
+        $this->sks = $sks;
     }
 
 }

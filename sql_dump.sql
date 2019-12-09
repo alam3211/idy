@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2019 at 08:12 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: Dec 09, 2019 at 02:38 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.2.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `kpl_ipd`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dosen`
+--
+
+CREATE TABLE `dosen` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nik` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dosen`
+--
+
+INSERT INTO `dosen` (`id`, `nik`, `nama`) VALUES
+(1, '198701032014041001', 'Rizky Januar Akbar, S.Kom., M.Eng.'),
+(2, '196810021994032001', 'Dr. Ir. Siti Rochimah, M.T.');
 
 -- --------------------------------------------------------
 
@@ -71,6 +91,30 @@ INSERT INTO `jenis_kuisioner` (`id`, `nama`, `nama_inggris`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mata_kuliah`
+--
+
+CREATE TABLE `mata_kuliah` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `kode` varchar(255) NOT NULL,
+  `sks` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mata_kuliah`
+--
+
+INSERT INTO `mata_kuliah` (`id`, `nama`, `kode`, `sks`) VALUES
+(1, 'Realitas Virtual dan Augmentasi	', 'IF184932', 3),
+(2, 'Komputasi Awan', 'IF184942', 3),
+(3, 'Rekayasa Pengetahuan', 'IF184962', 3),
+(4, 'Evolusi Perangkat Lunak', 'IF184973', 3),
+(5, 'Konstruksi Perangkat Lunak', 'IF184974', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pertanyaan_kuisioner`
 --
 
@@ -87,11 +131,17 @@ CREATE TABLE `pertanyaan_kuisioner` (
 
 INSERT INTO `pertanyaan_kuisioner` (`id`, `jenis_id`, `isi`, `isi_inggris`) VALUES
 ('d2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 1, 'Testing2', 'Testing2'),
-('db1c1e17-c6db-438d-9c3b-fb005527a308', 1, 'Percobaan', 'Testing');
+('db1c1e17-c6db-438d-9c3b-fb005527a308', 2, 'Percobaan', 'Testing');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `dosen`
+--
+ALTER TABLE `dosen`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jawaban_kuisioner`
@@ -107,11 +157,33 @@ ALTER TABLE `jenis_kuisioner`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mata_kuliah`
+--
+ALTER TABLE `mata_kuliah`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pertanyaan_kuisioner`
 --
 ALTER TABLE `pertanyaan_kuisioner`
   ADD PRIMARY KEY (`id`),
   ADD KEY `foreign_key` (`jenis_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `dosen`
+--
+ALTER TABLE `dosen`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `mata_kuliah`
+--
+ALTER TABLE `mata_kuliah`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -7,12 +7,14 @@ class Kelas
     private $id;
     private $mataKuliah;
     private $dosen;
+    private $dayaTampung;
     
-    public function __construct($id = null,MataKuliah $mataKuliah, Dosen $dosen)
+    public function __construct($id = null,MataKuliah $mataKuliah, Dosen $dosen, $dayaTampung)
     {
         $this->id = $id;
         $this->mataKuliah = $mataKuliah;
         $this->dosen = $dosen;
+        $this->dayaTampung = $dayaTampung
     }
 
     public function id(){

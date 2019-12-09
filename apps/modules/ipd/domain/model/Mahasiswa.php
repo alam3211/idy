@@ -8,7 +8,7 @@ class Mahasiswa
     private $nrp;
     private $nama;
     
-    public function __construct($id = null, $nrp, $nama)
+    public function __construct($nrp, $nama, $id = null)
     {
         $this->id = $id;
         $this->nrp = $nrp;

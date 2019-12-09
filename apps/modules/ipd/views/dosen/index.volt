@@ -24,10 +24,23 @@
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">
-                                <b>Jumlah Responden</b> / Peserta : <b>30</b> / 31
+                                Hasil IPD
                             </h3>
                         </div>
                         <div class="block-content">
+                            <div class="form-group">
+                                <label for="matakuliah">Pilih Matakuliah</label>
+                                <select class="form-control" id="matakuliah" name="matakuliah">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                              </div>
+                        </div>
+                        <div class="block-content">
+                            <h5><b>Jumlah Responden</b> / Peserta : <b>30</b> / 31</h4>
                             <table class="js-table-sections table table-bordered">
                                 <thead align="center">
                                     <tr>
