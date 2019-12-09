@@ -10,28 +10,31 @@ use Idy\Ipd\Application\ViewAllPertanyaanJawabanDosenService;
 use Idy\Ipd\Application\ViewAllPertanyaanJawabanMatkulService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdRequest;
-use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
+use Idy\Ipd\Application\ViewKelasbyDosenService;
 use Phalcon\Mvc\Controller;
 
 class DosenController extends Controller
 {
     private $pertanyaanRepository;
     private $jawabanRepository;
+    private $ipdRepository;
     private $createPertanyaanKuisionerService;
     private $createJawabanKuisionerService;
 
     public function initialize(){
         $this->pertanyaanRepository                     = $this->di->getShared('sql_pertanyaan_repository');
         $this->jawabanRepository                        = $this->di->getShared('sql_jawaban_repository');
-        $this->createPertanyaanKuisionerService         = new CreatePertanyaanKuisionerService($this->pertanyaanRepository);
-        $this->createJawabanKuisionerService            = new CreateJawabanKuisionerService($this->jawabanRepository);
+        $this->ipdRepository                            = $this->di->getShared('sql_ipd_repository');
         $this->viewAllPertanyaanJawabanDosenService     = new ViewAllPertanyaanJawabanDosenService($this->pertanyaanRepository);
         $this->viewAllPertanyaanJawabanMatkulService    = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
+        $this->viewKelasbyDosenService                 = new ViewKelasbyDosenService($this->ipdRepository);
         $this->viewPertanyaanJawabanService             = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
     }
 
     public function indexAction()
     {
+        $kelasOptions                = $this->viewKelasbyDosenService->execute();
+        $this->view->kelasOptions    = $kelasOptions->kelas;
         $this->view->pick('dosen/index');
         return;
     }

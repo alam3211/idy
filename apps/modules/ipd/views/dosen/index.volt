@@ -29,13 +29,11 @@
                         </div>
                         <div class="block-content">
                             <div class="form-group">
-                                <label for="matakuliah">Pilih Matakuliah</label>
+                                <label for="matakuliah">Pilih Mata Kuliah</label>
                                 <select class="form-control" id="matakuliah" name="matakuliah">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
+                                    {% for kelas in kelasOptions %}
+                                    <option value="{{ kelas['id'] }}">{{ kelas['nama_mata_kuliah'] }} | {{ kelas['nama_kelas'] }} | {{ kelas['sks_mata_kuliah'] }} SKS</option>
+                                    {% endfor %}
                                 </select>
                               </div>
                         </div>

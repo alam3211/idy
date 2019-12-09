@@ -14,7 +14,7 @@ class Kelas
         $this->id = $id;
         $this->mataKuliah = $mataKuliah;
         $this->dosen = $dosen;
-        $this->dayaTampung = $dayaTampung
+        $this->dayaTampung = $dayaTampung;
     }
 
     public function id(){
