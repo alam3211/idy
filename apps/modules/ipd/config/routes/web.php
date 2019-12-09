@@ -30,6 +30,13 @@ $router->add('/ipd/dosen/kuisioner/dosen',[
     'action' => 'indexKuisionerDosen'
 ])->setName('ipd-dosen-kuisioner-dosen');
 
+$router->add('/ipd/admin/dosen',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'allDosen'
+])->setName('ipd-admin-dosen');
+
 $router->add('/ipd/admin/dosen/create',[
     'namespace' => $namespace,
     'module' => 'ipd',
@@ -71,6 +78,13 @@ $router->add('/ipd/admin/dosen/delete',[
     'controller' => 'admin',
     'action' => 'deleteDosen'
 ])->setName('ipd-admin-dosen-destroy')->via(['POST']);
+
+$router->add('/ipd/admin/matkul',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'admin',
+    'action' => 'allMataKuliah'
+])->setName('ipd-admin-matkul');
 
 
 $router->add('/ipd/admin/matkul/create',[

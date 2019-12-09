@@ -21,8 +21,8 @@ class IpdController extends Controller
     private $createJawabanKuisionerService;
     
     public function initialize(){
-        $this->pertanyaanRepository              = $this->di->getShared('sql_pertanyaan_repository');
-        $this->jawabanRepository                = $this->di->getShared('sql_jawaban_repository');
+        $this->pertanyaanRepository = $this->di->getShared('sql_pertanyaan_repository');
+        $this->jawabanRepository    = $this->di->getShared('sql_jawaban_repository');
     }
 
     public function indexAction(){

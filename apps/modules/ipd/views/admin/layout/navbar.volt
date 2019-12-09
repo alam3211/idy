@@ -4,7 +4,7 @@
 
         <li class="nav-main-heading"><span class="sidebar-mini-visible">DS</span><span class="sidebar-mini-hidden">Dosen</span></li>
         <li>
-            <a href="#"><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Dosen</span></a>
+            <a href="{{ url(['for':'ipd-admin-dosen']) }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Dosen</span></a>
         </li>
         <li id="sidebar-dosen">
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Kuisioner</span></a>
@@ -19,7 +19,7 @@
         </li>
         <li class="nav-main-heading"><span class="sidebar-mini-visible">MK</span><span class="sidebar-mini-hidden">Mata Kuliah</span></li>
         <li>
-            <a href="#"><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Matkul</span></a>
+            <a href="{{ url(['for':'ipd-admin-matkul']) }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Matkul</span></a>
         </li>
         <li id="sidebar-matkul" >
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Kuisioner</span></a>

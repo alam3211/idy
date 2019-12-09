@@ -27,7 +27,7 @@ class DosenController extends Controller
         $this->ipdRepository                            = $this->di->getShared('sql_ipd_repository');
         $this->viewAllPertanyaanJawabanDosenService     = new ViewAllPertanyaanJawabanDosenService($this->pertanyaanRepository);
         $this->viewAllPertanyaanJawabanMatkulService    = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
-        $this->viewKelasbyDosenService                 = new ViewKelasbyDosenService($this->ipdRepository);
+        $this->viewKelasbyDosenService                  = new ViewKelasbyDosenService($this->ipdRepository);
         $this->viewPertanyaanJawabanService             = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
     }
 

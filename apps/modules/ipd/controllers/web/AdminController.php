@@ -14,6 +14,9 @@ use Idy\Ipd\Application\ViewAllPertanyaanJawabanDosenService;
 use Idy\Ipd\Application\ViewAllPertanyaanJawabanMatkulService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdRequest;
+use Idy\Ipd\Application\ViewAllDosenService;
+use Idy\Ipd\Application\ViewAllMataKuliahService;
+
 use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 use Phalcon\Mvc\Controller;
 
@@ -22,6 +25,7 @@ class AdminController extends Controller
 
     private $pertanyaanRepository;
     private $jawabanRepository;
+    private $ipdRepository;
     private $createPertanyaanKuisionerService;
     private $createJawabanKuisionerService;
     private $updatePertanyaanJawabanKuisionerService;
@@ -30,11 +34,14 @@ class AdminController extends Controller
     public function initialize(){
         $this->pertanyaanRepository                     = $this->di->getShared('sql_pertanyaan_repository');
         $this->jawabanRepository                        = $this->di->getShared('sql_jawaban_repository');
+        $this->ipdRepository                            = $this->di->getShared('sql_ipd_repository');
         $this->createPertanyaanKuisionerService         = new CreatePertanyaanKuisionerService($this->pertanyaanRepository);
         $this->createJawabanKuisionerService            = new CreateJawabanKuisionerService($this->jawabanRepository);
         $this->viewAllPertanyaanJawabanDosenService     = new ViewAllPertanyaanJawabanDosenService($this->pertanyaanRepository);
         $this->viewAllPertanyaanJawabanMatkulService    = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
         $this->viewPertanyaanJawabanService             = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
+        $this->viewAllDosenService                      = new ViewAllDosenService($this->ipdRepository);
+        $this->viewAllMataKuliahService                 = new ViewAllMataKuliahService($this->ipdRepository);
         $this->updatePertanyaanJawabanKuisionerService  = new UpdatePertanyaanJawabanKuisionerService($this->pertanyaanRepository, $this->jawabanRepository);
         $this->deletePertanyaanJawabanKuisionerService  = new DeletePertanyaanJawabanKuisionerService($this->pertanyaanRepository);
     }
@@ -75,6 +82,12 @@ class AdminController extends Controller
         }catch(Exception $e){
             $this->flashSession->error("Gagal menambahkan soal!");
         }
+    }
+
+    public function allDosenAction(){
+        $respond                = $this->viewAllDosenService->execute();
+        $this->view->respond    = $respond->dosen;
+        $this->view->pick('admin/dosen/list');
     }
 
     public function listDosenAction(){
@@ -139,10 +152,12 @@ class AdminController extends Controller
             $this->view->disable();
         }
     }
-
-
     
-
+    public function allMataKuliahAction(){
+        $respond                = $this->viewAllMataKuliahService->execute();
+        $this->view->respond    = $respond->mataKuliah;
+        $this->view->pick('admin/matkul/list');
+    }
 
     public function createMatkulAction(){
         $this->view->pick('admin/matkul/create');

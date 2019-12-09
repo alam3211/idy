@@ -18,6 +18,16 @@ class SqlIpdRepository implements IpdRepository
         $this->db = $db;
     }
 
+    public function allDosen()
+    {
+        $querySet = $this->db->query(
+            "SELECT * FROM dosen "
+        );
+        $resultSet = $querySet->fetchAll();
+
+        return $resultSet;
+    }
+
     public function kelasbyDosen()
     {
         $querySet = $this->db->query(
@@ -26,6 +36,17 @@ class SqlIpdRepository implements IpdRepository
             WHERE dosen_id = 1"
         );
         $resultSet = $querySet->fetchAll();
+        return $resultSet;
+    }
+
+
+    public function allMataKuliah()
+    {
+        $querySet = $this->db->query(
+            "SELECT * FROM mata_kuliah "
+        );
+        $resultSet = $querySet->fetchAll();
+
         return $resultSet;
     }
 

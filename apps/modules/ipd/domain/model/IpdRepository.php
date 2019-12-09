@@ -12,6 +12,10 @@ interface IpdRepository
 
     public function kelasbyDosen();
     
+    public function allMataKuliah();
+
+    public function allDosen();
+    
     public function allPertanyaanKuisioner();
 
     public function allPertanyaanWithJawaban();
