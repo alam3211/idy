@@ -2,7 +2,7 @@
 
 namespace Idy\Ipd\Domain\Model;
 
-class Kuisoner
+class Kuisioner
 {
     private $id;
     private $mahasiswa;

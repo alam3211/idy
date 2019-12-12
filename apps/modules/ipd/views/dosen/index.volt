@@ -32,7 +32,7 @@
                                 <label for="matakuliah">Pilih Mata Kuliah</label>
                                 <select class="form-control" id="matakuliah" name="matakuliah">
                                     {% for kelas in kelasOptions %}
-                                    <option value="{{ kelas['id'] }}">{{ kelas['nama_mata_kuliah'] }} | {{ kelas['nama_kelas'] }} | {{ kelas['sks_mata_kuliah'] }} SKS</option>
+                                    <option value="{{ kelas['id'] }}">{{ kelas['kode_mata_kuliah'] }} | {{ kelas['nama_mata_kuliah'] }} | {{ kelas['nama_kelas'] }} | {{ kelas['sks_mata_kuliah'] }} SKS</option>
                                     {% endfor %}
                                 </select>
                               </div>
