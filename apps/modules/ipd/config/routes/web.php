@@ -128,3 +128,24 @@ $router->add('/ipd/admin/matkul/delete',[
     'controller' => 'admin',
     'action' => 'deleteMatkul'
 ])->setName('ipd-admin-matkul-destroy')->via(['POST']);
+
+$router->add('/ipd/mahasiswa/kuisoner-kelas',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'mahasiswa',
+    'action' => 'daftarKuisonerKelas'
+])->setName('ipd-mahasiswa-kuisoner-mata-kuliah');
+
+$router->add('/ipd/mahasiswa/kuisoner-dosen',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'mahasiswa',
+    'action' => 'daftarKuisonerDosen'
+])->setName('ipd-mahasiswa-kuisoner-dosen');
+
+$router->add('/ipd/mahasiswa/isi-kuisoner-kelas',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'mahasiswa',
+    'action' => 'isiKuisonerKelas'
+])->setName('ipd-mahasiswa-isi-kuisoner-mata-kuliah');
