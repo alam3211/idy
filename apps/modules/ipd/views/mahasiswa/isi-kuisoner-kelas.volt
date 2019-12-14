@@ -24,7 +24,7 @@
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">
-                                Daftar Kuisoner Mata Kuliah
+                                {{  }}
                             </h3>
                         </div>
                         <div class="block-content">
