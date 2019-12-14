@@ -11,6 +11,7 @@ use Idy\Ipd\Application\ViewAllPertanyaanJawabanMatkulService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdRequest;
 use Idy\Ipd\Application\ViewKelasbyDosenService;
+use Idy\Ipd\Application\ViewIpdKuisionerbyDosen;
 use Phalcon\Mvc\Controller;
 
 class DosenController extends Controller
@@ -28,12 +29,15 @@ class DosenController extends Controller
         $this->viewAllPertanyaanJawabanDosenService     = new ViewAllPertanyaanJawabanDosenService($this->pertanyaanRepository);
         $this->viewAllPertanyaanJawabanMatkulService    = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
         $this->viewKelasbyDosenService                  = new ViewKelasbyDosenService($this->ipdRepository);
+        $this->viewIpdKuisionerbyDosenService           = new ViewIpdKuisionerbyDosen($this->ipdRepository);
         $this->viewPertanyaanJawabanService             = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
     }
 
     public function indexAction()
     {
         $kelasOptions                = $this->viewKelasbyDosenService->execute();
+        $ipdDosen                    = $this->viewIpdKuisionerbyDosenService->execute();
+        dd($ipdDosen);
         $this->view->kelasOptions    = $kelasOptions->kelas;
         $this->view->pick('dosen/index');
         return;

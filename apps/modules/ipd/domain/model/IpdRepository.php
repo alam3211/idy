@@ -8,15 +8,13 @@ use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 
 interface IpdRepository
 {
-    public function save(PertanyaanKuisioner $pertanyaanKuisioner);
-
     public function kelasbyDosen();
+
+    public function ipdbyDosen();
+
+    public function ipmkbyDosen();
     
     public function allMataKuliah();
 
     public function allDosen();
-    
-    public function allPertanyaanKuisioner();
-
-    public function allPertanyaanWithJawaban();
 }

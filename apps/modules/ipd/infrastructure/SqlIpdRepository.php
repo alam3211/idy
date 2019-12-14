@@ -50,71 +50,39 @@ class SqlIpdRepository implements IpdRepository
         return $resultSet;
     }
 
-    public function save(PertanyaanKuisioner $pertanyaanKuisioner)
+    public function ipdbyDosen()
     {
-            $querySet   = $this->db->execute(
-                "INSERT INTO pertanyaan_kuisioner (id, isi, isi_inggris) VALUES (?,?,?)",
-                [
-                    $pertanyaanKuisioner->id()->id(),
-                    $pertanyaanKuisioner->isi(),
-                    $pertanyaanKuisioner->isiInggris()
-                ]
-            );
-        $resultSet = $querySet;
+        $querySet = $this->db->query(
+            "SELECT * 
+            FROM kuisoner as ku 
+            INNER JOIN kelas as ke on ku.id_kelas = ke.id 
+            INNER JOIN dosen as d on ke.dosen_id = d.id
+            WHERE ke.dosen_id = 1"
+        );
+
+        // $querySet = $this->db->query(
+        //     "SELECT * 
+        //     FROM kuisoner as ku 
+        //     INNER JOIN kelas as ke on ku.id_kelas = ke.id 
+        //     INNER JOIN dosen as d on ke.dosen_id = d.id 
+        //     LEFT JOIN response_kuisoner as rk on ku.id_kuisoner = rk.kuisoner_id
+        //     WHERE ke.dosen_id = 1"
+        // );
+        $resultSet = $querySet->fetchAll();
+
         return $resultSet;
     }
 
-    public function allPertanyaanKuisioner()
+    public function ipmkbyDosen()
     {
         $querySet = $this->db->query(
-            "SELECT * FROM pertanyaan_kuisioner "
+            "SELECT * FROM mata_kuliah "
         );
         $resultSet = $querySet->fetchAll();
 
-        $pertanyaan_collection = array();
         return $resultSet;
     }
 
-    public function allPertanyaanWithJawaban(){
-        $querySet = $this->db->query(
-            "SELECT p.id as pid, j.id as jid, p.isi as isi, p.isi_inggris as isi_inggris, 
-                j.jawaban as jawaban, j.jawaban_inggris as jawaban_inggris, j.bobot as bobot
-             FROM pertanyaan_kuisioner as p INNER JOIN jawaban_kuisioner as j on p.id = j.pertanyaan_id ORDER BY pid,bobot"
-        );
-        $resultSet = $querySet->fetchAll();
-        
-        return $this->groupPertanyaanWithJawaban($resultSet);
-    }
-
-    public function groupPertanyaanWithJawaban($query_result){
-        $temp = array();
-
-        foreach($query_result as $item){
-            if(!array_key_exists($item['pid'],$temp)){
-                $temp[$item['pid']]['detail'] = array();
-                $temp[$item['pid']]['detail'][] = array(
-                                                    'isi'=>$item['isi'],
-                                                    'isiInggris' => $item['isi_inggris']
-                                                    );
-                $temp[$item['pid']]['relation'] = array();
-                $temp[$item['pid']]['relation'][]  = array(
-                                                        'id' => $item['jid'],
-                                                        'jawaban' => $item['jawaban'],
-                                                        'jawabanInggris' => $item['jawaban_inggris'],
-                                                        'bobot' => $item['bobot'] 
-                                                    );
-            }else{
-                $temp[$item['pid']]['relation'][]  = array(
-                                                        'id' => $item['jid'],
-                                                        'jawaban' => $item['jawaban'],
-                                                        'jawabanInggris' => $item['jawaban_inggris'],
-                                                        'bobot' => $item['bobot'] 
-                                                    );
-            }
-        }
-
-        return $temp;
-    }
 
     public function cmp($a, $b) {
         return strcmp($a['bobot'], $b['bobot']);
