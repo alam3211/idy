@@ -39,7 +39,7 @@
                               </div>
                         </div>
                         <div class="block-content">
-                            <h5 id="responden_peserta"><b>Jumlah Responden</b> / Peserta : <b>30</b> / 31</h4>
+                            <h5 id="responden_peserta"><b>Jumlah Responden</b> / Peserta : <b>0</b> / 0</h4>
                             <table class="js-table-sections table table-bordered">
                                 <thead align="center">
                                     <tr>
