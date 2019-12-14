@@ -39,7 +39,7 @@
                               </div>
                         </div>
                         <div class="block-content">
-                            <h5><b>Jumlah Responden</b> / Peserta : <b>30</b> / 31</h4>
+                            <h5 id="responden_peserta"><b>Jumlah Responden</b> / Peserta : <b>30</b> / 31</h4>
                             <table class="js-table-sections table table-bordered">
                                 <thead align="center">
                                     <tr>
@@ -52,8 +52,8 @@
                                 </thead>
                                 <tbody class="js-table-sections-header" align="center">
                                     <tr>
-                                        <td class="font-w600">3.40</td>
-                                        <td class="font-w600">3.99</td>
+                                        <td id="ipd" class="font-w600">0</td>
+                                        <td id="ipmk" class="font-w600">0</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -71,21 +71,20 @@
 
         $("#matakuliah").change(function() {
             const matkulVal = $("#matakuliah").val();
-            var request = $.ajax({
+            $.ajax({
                 url: "{{ url(['for':'ipd-dosen-ipd']) }}",
                 method: "POST",
                 data: JSON.parse(matkulVal),
-                dataType: "html"
-            });
-                
-            request.done(function( msg ) {
-                console.log(msg);
-            });
-                
-            request.fail(function( jqXHR, textStatus ) {
-                alert( "Request failed: " + textStatus );
+                success : function(response){
+                    updateView(response.data);
+                }
             });
         })
-
+        function updateView(data)
+        {
+            $('#ipd').text(data.ipd);
+            $('#ipmk').text(data.ipmk);
+            $('#responden_peserta').html("<b>Jumlah Responden</b> / Peserta : <b>"+data.totalResponden+"</b> / "+data.totalPeserta)
+        }
     </script>
 {% endblock %}

@@ -11,7 +11,8 @@ use Idy\Ipd\Application\ViewAllPertanyaanJawabanMatkulService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdService;
 use Idy\Ipd\Application\ViewPertanyaanJawabanByPertanyaanIdRequest;
 use Idy\Ipd\Application\ViewKelasbyDosenService;
-use Idy\Ipd\Application\ViewIpdKuisionerbyDosenService;
+use Idy\Ipd\Application\ViewIpdKuisionerbyKelasService;
+use Idy\Ipd\Application\ViewIpdKuisionerbyKelasRequest;
 use Phalcon\Mvc\Controller;
 
 class DosenController extends Controller
@@ -29,7 +30,7 @@ class DosenController extends Controller
         $this->viewAllPertanyaanJawabanDosenService     = new ViewAllPertanyaanJawabanDosenService($this->pertanyaanRepository);
         $this->viewAllPertanyaanJawabanMatkulService    = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
         $this->viewKelasbyDosenService                  = new ViewKelasbyDosenService($this->ipdRepository);
-        $this->viewIpdKuisionerbyDosenService           = new ViewIpdKuisionerbyDosenService($this->ipdRepository);
+        $this->ViewIpdKuisionerbyKelasService           = new ViewIpdKuisionerbyKelasService($this->ipdRepository);
         $this->viewPertanyaanJawabanService             = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
     }
 
@@ -61,10 +62,28 @@ class DosenController extends Controller
 
     public function getIpdAction()
     {
-        if ($this->request->isAjax() && $this->request->getPost('id')) {
-            $this->response->setJsonContent('Hello')
-            return $this->response;
-            // $ipdDosen = $this->viewIpdKuisionerbyDosenService->execute();
-        }
+        if ($this->request->isAjax()) {
+            $this->response->setJsonContent('True');
+            $idKelas        = $this->request->getPost('id');
+            $dayaTampung    = $this->request->getPost('daya_tampung');
+            
+            $request = new ViewIpdKuisionerbyKelasRequest($idKelas, $dayaTampung);
+            $ipd = $this->ViewIpdKuisionerbyKelasService->execute($request);
+
+
+            $response = [
+                'code' => 200,
+                'data' => [
+                    'totalPeserta'      => $ipd->hasilIpd()->totalPeserta(),
+                    'totalResponden'    => $ipd->hasilIpd()->totalResponden(),
+                    'ipd'               => $ipd->hasilIpd()->ipd(),
+                    'ipmk'              => $ipd->hasilIpd()->ipmk()
+                ]
+            ];
+
+            $this->response->setJsonContent($response);
+
+        }else $this->response->setJsonContent('This is not ajax call');
+        return $this->response;
     }
 }

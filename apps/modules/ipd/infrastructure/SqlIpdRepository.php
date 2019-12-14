@@ -49,15 +49,16 @@ class SqlIpdRepository implements IpdRepository
         return $resultSet;
     }
 
-    public function kuisionerbyDosen()
+    public function kuisionerbyKelas($request)
     {
         $querySet = $this->db->query(
-            "SELECT ku.id_kuisoner as id_kuisioner, ke.nama as nama_kelas, rk.kuisoner_id as id_respon_kuisioner , rk.bobot as bobot_respon_kuisioner
+            "SELECT ku.id_kuisoner as id_kuisioner, ke.nama as nama_kelas, rk.kuisoner_id as id_respon_kuisioner , rk.bobot as bobot_respon_kuisioner, ku.jenis_id as jenis_kuisioner
             FROM kuisoner as ku 
-            INNER JOIN kelas as ke on ku.id_kelas = ke.id 
-            INNER JOIN dosen as d on ke.dosen_id = d.id
+            INNER JOIN kelas as ke on ku.id_kelas = ke.id
             LEFT JOIN response_kuisoner as rk on ku.id_kuisoner = rk.kuisoner_id
-            WHERE ke.dosen_id = 1"
+            WHERE ku.id_kelas = ?",[
+                $request->idKelas
+            ]
         );
 
         $resultSet = $querySet->fetchAll();
@@ -79,6 +80,11 @@ class SqlIpdRepository implements IpdRepository
         $temp = array();
         foreach($resultSet as $item){
             if(!array_key_exists($item['id_kuisioner'],$temp)){
+                $temp[$item['id_kuisioner']]['respon_kuisioner'] = array();
+                if($item['jenis_kuisioner'] == 1)
+                    $temp[$item['id_kuisioner']]['jenis_kuisioner'] = "Dosen";
+                else
+                    $temp[$item['id_kuisioner']]['jenis_kuisioner'] = "Mata_Kuliah";
                 $temp[$item['id_kuisioner']]['respon_kuisioner'] = array();
                 $temp[$item['id_kuisioner']]['respon_kuisioner'][] = array(
                                                     'id'=>$item['id_respon_kuisioner'],
