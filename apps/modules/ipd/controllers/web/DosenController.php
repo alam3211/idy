@@ -36,7 +36,6 @@ class DosenController extends Controller
     public function indexAction()
     {
         $kelasOptions                = $this->viewKelasbyDosenService->execute();
-        $ipdDosen                    = $this->viewIpdKuisionerbyDosenService->execute();
         
         $this->view->kelasOptions    = $kelasOptions->kelas;
         $this->view->pick('dosen/index');
@@ -58,5 +57,14 @@ class DosenController extends Controller
         $this->view->respond    = $respond->pertanyaan_with_jawaban;
         $this->view->pick('dosen/kuisioner/index');
         return;
+    }
+
+    public function getIpdAction()
+    {
+        if ($this->request->isAjax() && $this->request->getPost('id')) {
+            $this->response->setJsonContent('Hello')
+            return $this->response;
+            // $ipdDosen = $this->viewIpdKuisionerbyDosenService->execute();
+        }
     }
 }

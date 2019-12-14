@@ -16,6 +16,13 @@ $router->add('/ipd/dosen',[
     'action' => 'index'
 ])->setName('ipd-dosen');
 
+$router->add('/ipd/dosen/ipd',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'dosen',
+    'action' => 'getIpd'
+])->setName('ipd-dosen-ipd')->via(['POST']);
+
 $router->add('/ipd/dosen/kuisioner/matkul',[
     'namespace' => $namespace,
     'module' => 'ipd',

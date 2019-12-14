@@ -18,7 +18,7 @@ class ViewIpdKuisionerbyDosenService{
 
     public function execute(){
         try{
-            $ipd                = $this->ipdRepository->ipdbyDosen();
+            $ipd                = $this->ipdRepository->kuisionerbyDosen();
             $allKelasbyDosen    = $this->ipdRepository->kelasbyDosen();
             
             $calcIpd = new CalculateIpd($ipd, $allKelasbyDosen);

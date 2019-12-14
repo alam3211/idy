@@ -31,8 +31,9 @@
                             <div class="form-group">
                                 <label for="matakuliah">Pilih Mata Kuliah</label>
                                 <select class="form-control" id="matakuliah" name="matakuliah">
+                                    <option value="" selected disabled>-- Pilih Mata Kuliah --</option>
                                     {% for kelas in kelasOptions %}
-                                    <option value="{{ kelas['id'] }}">{{ kelas['nama_mata_kuliah'] }} | {{ kelas['nama_kelas'] }} | {{ kelas['sks_mata_kuliah'] }} SKS</option>
+                                    <option value='{ "id":"{{ kelas["id"] }}","daya_tampung":"{{ kelas["daya_tampung"] }}"}'>{{ kelas['kode_mata_kuliah']}} | {{ kelas['nama_mata_kuliah'] }} | {{ kelas['nama_kelas'] }} | {{ kelas['sks_mata_kuliah'] }} SKS</option>
                                     {% endfor %}
                                 </select>
                               </div>
@@ -67,5 +68,24 @@
         jQuery(function () {
             Codebase.helpers('table-tools');
         });
+
+        $("#matakuliah").change(function() {
+            const matkulVal = $("#matakuliah").val();
+            var request = $.ajax({
+                url: "{{ url(['for':'ipd-dosen-ipd']) }}",
+                method: "POST",
+                data: JSON.parse(matkulVal),
+                dataType: "html"
+            });
+                
+            request.done(function( msg ) {
+                console.log(msg);
+            });
+                
+            request.fail(function( jqXHR, textStatus ) {
+                alert( "Request failed: " + textStatus );
+            });
+        })
+
     </script>
 {% endblock %}

@@ -10,7 +10,7 @@ interface IpdRepository
 {
     public function kelasbyDosen();
 
-    public function ipdbyDosen();
+    public function kuisionerbyDosen();
 
     public function ipmkbyDosen();
     

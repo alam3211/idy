@@ -31,14 +31,13 @@ class SqlIpdRepository implements IpdRepository
     public function kelasbyDosen()
     {
         $querySet = $this->db->query(
-            "SELECT k.id as id, k.nama as nama_kelas, mk.nama as nama_mata_kuliah, mk.sks as sks_mata_kuliah, k.daya_tampung as daya_tampung
+            "SELECT k.id as id, k.nama as nama_kelas, mk.kode as kode_mata_kuliah, mk.nama as nama_mata_kuliah, mk.sks as sks_mata_kuliah, k.daya_tampung as daya_tampung
             FROM kelas as k INNER JOIN dosen as d on k.dosen_id = d.id INNER JOIN mata_kuliah as mk on k.mata_kuliah_id = mk.id
             WHERE dosen_id = 1"
         );
         $resultSet = $querySet->fetchAll();
         return $resultSet;
     }
-
 
     public function allMataKuliah()
     {
@@ -50,7 +49,7 @@ class SqlIpdRepository implements IpdRepository
         return $resultSet;
     }
 
-    public function ipdbyDosen()
+    public function kuisionerbyDosen()
     {
         $querySet = $this->db->query(
             "SELECT ku.id_kuisoner as id_kuisioner, ke.nama as nama_kelas, rk.kuisoner_id as id_respon_kuisioner , rk.bobot as bobot_respon_kuisioner
