@@ -45,7 +45,7 @@
                                         <td class="font-w600">{{kuisoner['id_kuisoner']==null?'Belum Diisi':'Sudah Diisi'}}</td>
                                         <td class="font-w600">
                                             {% if kuisoner['id_kuisoner']==null %}
-                                            <form action="http://google.com" method="get">
+                                            <form action="{{url('/ipd/mahasiswa/isi-kuisoner-kelas')}}/{{kuisoner['id_kelas']}}" method="get">
                                                 <button type="submit" class="btn btn-sm btn-primary" href="google.com">Isi Kuisoner</button>
                                             </form>
                                             {% endif %}

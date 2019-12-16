@@ -10,4 +10,5 @@ interface KuisonerRepository
 {
     public function getKuisonerDosenMahasiswaId(Mahasiswa $mahasiswa);
     public function getKuisonerKelasMahasiswaId(Mahasiswa $mahasiswa);
+    public function submitForm(Kuisoner $kuisioner);
 }

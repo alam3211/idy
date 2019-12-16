@@ -10,6 +10,7 @@ use Idy\Ipd\Domain\Model\PertanyaanKuisioner;
 use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 use Idy\Ipd\Domain\Model\PertanyaanRepository;
 use Idy\Ipd\Domain\Model\JenisPertanyaan;
+use Idy\Ipd\Domain\Model\Kuisoner;
 use Idy\Ipd\Domain\Model\KuisonerRepository;
 use Idy\Ipd\Domain\Model\Mahasiswa;
 
@@ -52,5 +53,30 @@ class SqlKuisonerRepository implements KuisonerRepository
         );
         $resultSet = $querySet->fetchAll();
         return $resultSet;
+    }
+
+    public function submitForm(Kuisoner $kuisoner){
+        $querySetKuisoner = $this->db->execute(
+            "INSERT INTO kuisoner ( jenis_id , id_kelas, id_mahasiswa, catatan) VALUES (?,?,?,?)",
+            [
+                $kuisoner->jenisId(),
+                $kuisoner->idKelas(),
+                $kuisoner->idMahasiswa(),
+                $kuisoner->catatan(),
+            ]
+        );
+        $id = $this->db->lastInsertId();
+        foreach ($kuisoner->idPertanyaan() as $index => $item) {
+            $querySetResponse = $this->db->execute(
+                "INSERT INTO response_kuisoner ( kuisoner_id , pertanyaan_id, jawaban_id, bobot) VALUES (?,?,?,?)",
+                [
+                    $id,
+                    $kuisoner->idPertanyaan()[$index],
+                    $kuisoner->idJawaban()[$index],
+                    $kuisoner->bobot()[$index],
+                ]
+            );
+        }
+        return $querySetResponse;
     }
 }

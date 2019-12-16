@@ -20,7 +20,7 @@
                 <div class="content">
                     {{ flashSession.output() }}
                     <!-- Table Sections (.js-table-sections class is initialized in Helpers.tableToolsSections()) -->
-                    <h2 class="content-heading">Kuisoner Mata Kuliah</h2>
+                    <h2 class="content-heading">Kuisoner Dosen</h2>
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">
@@ -29,7 +29,7 @@
                             </h3>
                         </div>
                         <div class="block-content">
-                            <form action="{{ url(['for': 'submit-kuisoner-kelas']) }}" method="post">
+                            <form action="{{ url(['for': 'submit-kuisoner-dosen']) }}" method="post">
                                 {% for key, p in pertanyaan %}
                                 <div class="form-group">
                                     <input type="hidden" name="kelas" value="{{detail[0]['kelas_id']}}">

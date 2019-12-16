@@ -156,7 +156,8 @@ CREATE TABLE `kuisoner` (
   `id_kuisoner` int(11) NOT NULL,
   `id_mahasiswa` int(11) NOT NULL,
   `id_kelas` int(11) NOT NULL,
-  `jenis_id` int(11) NOT NULL
+  `jenis_id` int(11) NOT NULL,
+  `catatan` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

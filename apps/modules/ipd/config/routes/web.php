@@ -150,9 +150,30 @@ $router->add('/ipd/mahasiswa/kuisoner-dosen',[
     'action' => 'daftarKuisonerDosen'
 ])->setName('ipd-mahasiswa-kuisoner-dosen');
 
-$router->add('/ipd/mahasiswa/isi-kuisoner-kelas',[
+$router->add('/ipd/mahasiswa/isi-kuisoner-kelas/{id}',[
     'namespace' => $namespace,
     'module' => 'ipd',
     'controller' => 'mahasiswa',
     'action' => 'isiKuisonerKelas'
 ])->setName('ipd-mahasiswa-isi-kuisoner-mata-kuliah');
+
+$router->add('/ipd/mahasiswa/isi-kuisoner-dosen/{id}',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'mahasiswa',
+    'action' => 'isiKuisonerDosen'
+])->setName('ipd-mahasiswa-isi-kuisoner-dosen');
+
+$router->addPost('/ipd/mahasiswa/submit-kuisoner-kelas',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'mahasiswa',
+    'action' => 'submitKuisonerKelas'
+])->setName('submit-kuisoner-kelas');
+
+$router->addPost('/ipd/mahasiswa/submit-kuisoner-dosen',[
+    'namespace' => $namespace,
+    'module' => 'ipd',
+    'controller' => 'mahasiswa',
+    'action' => 'submitKuisonerDosen'
+])->setName('submit-kuisoner-dosen');

@@ -9,6 +9,7 @@ use Idy\Ipd\Domain\Model\PertanyaanKuisioner;
 use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 use Idy\Ipd\Domain\Model\PertanyaanRepository;
 use Idy\Ipd\Domain\Model\JenisPertanyaan;
+use Idy\Ipd\Domain\Model\Kuisoner;
 
 class SqlPertanyaanRepository implements PertanyaanRepository
 {
@@ -120,6 +121,7 @@ class SqlPertanyaanRepository implements PertanyaanRepository
             if(!array_key_exists($item['pid'],$temp)){
                 $temp[$item['pid']]['detail'] = array();
                 $temp[$item['pid']]['detail'][] = array(
+                                                    'id' => $item['pid'],
                                                     'isi'=>$item['isi'],
                                                     'isiInggris' => $item['isi_inggris']
                                                     );
