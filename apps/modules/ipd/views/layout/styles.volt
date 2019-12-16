@@ -8,6 +8,7 @@
         <!-- Stylesheets -->
 
         <!-- Fonts and Codebase framework -->
+        <link rel="stylesheet" href="{{ url('assets/js/plugins/sweetalert2/sweetalert2.min.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
         <link rel="stylesheet" id="css-main" href="{{ url('assets/css/codebase.min.css') }}">
 
