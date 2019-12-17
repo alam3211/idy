@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2019 at 03:29 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.2.23
+-- Waktu pembuatan: 17 Des 2019 pada 04.04
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kpl_ipd`
+-- Database: `idy`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dosen`
+-- Struktur dari tabel `dosen`
 --
 
 CREATE TABLE `dosen` (
@@ -35,7 +35,7 @@ CREATE TABLE `dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `dosen`
+-- Dumping data untuk tabel `dosen`
 --
 
 INSERT INTO `dosen` (`id`, `nik`, `nama`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `dosen` (`id`, `nik`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `frs`
+-- Struktur dari tabel `frs`
 --
 
 CREATE TABLE `frs` (
@@ -55,7 +55,7 @@ CREATE TABLE `frs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `frs`
+-- Dumping data untuk tabel `frs`
 --
 
 INSERT INTO `frs` (`id_frs`, `id_kelas`, `id_mahasiswa`) VALUES
@@ -65,7 +65,7 @@ INSERT INTO `frs` (`id_frs`, `id_kelas`, `id_mahasiswa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jawaban_kuisioner`
+-- Struktur dari tabel `jawaban_kuisioner`
 --
 
 CREATE TABLE `jawaban_kuisioner` (
@@ -77,7 +77,7 @@ CREATE TABLE `jawaban_kuisioner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jawaban_kuisioner`
+-- Dumping data untuk tabel `jawaban_kuisioner`
 --
 
 INSERT INTO `jawaban_kuisioner` (`id`, `pertanyaan_id`, `jawaban`, `jawaban_inggris`, `bobot`) VALUES
@@ -88,6 +88,7 @@ INSERT INTO `jawaban_kuisioner` (`id`, `pertanyaan_id`, `jawaban`, `jawaban_ingg
 ('3ade8bae-666b-48c1-85d2-859ec758f655', '0782d7dc-ad75-4667-97d7-125b762f0c1c', 'Sangat  Ya', 'Absolutely Yes', 4),
 ('401b69e4-28c9-4858-88b7-d89e0e629544', '18c41cf8-3a59-45ff-a690-72b033784144', 'Setuju', 'Yes', 3),
 ('52340e4c-3342-4efc-a95e-5e60bcd26c53', '428f16f5-a45d-4194-bc5e-ecaed1280721', 'Setuju', 'Yes', 3),
+('6dbad4c7-c51a-41f8-890d-b453b4c8f162', 'e9e81ea7-d26b-43ec-a6cd-01dc38268a50', 'Jawaban 1', 'Answer1', 1),
 ('6ebe669d-96ab-4668-8ed1-b10902f3b180', 'db1c1e17-c6db-438d-9c3b-fb005527a308', 'jawaban1', 'answer1', 1),
 ('6ebe669d-96ab-4668-8ed1-b10902f3b181', 'db1c1e17-c6db-438d-9c3b-fb005527a308', 'jawaban2', 'answer2', 1),
 ('71331671-2c07-4869-94e1-9364e12fca68', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Sangat Tidak Setuju', 'Absolutely No', 1),
@@ -100,6 +101,7 @@ INSERT INTO `jawaban_kuisioner` (`id`, `pertanyaan_id`, `jawaban`, `jawaban_ingg
 ('bd04ef79-1250-4a6a-b4e0-8ac04a0d7652', '2d5a45da-2d54-47ee-9943-8ec41a65ba9d', 'Setuju', 'Yes', 3),
 ('c827f43e-403b-4755-b1a0-f130db67fce9', '0782d7dc-ad75-4667-97d7-125b762f0c1c', 'Tidak', 'No', 1),
 ('d401e9ba-a62b-4324-a85c-c80364077c0a', '18c41cf8-3a59-45ff-a690-72b033784144', 'Tidak Setuju', 'No', 2),
+('dd5cb57e-d429-45ca-8bdf-47bd3e5305ec', 'e9e81ea7-d26b-43ec-a6cd-01dc38268a50', 'Jawaban 2', 'Answer 2', 2),
 ('e4a93e50-c9f9-4259-bf6d-0def7504be3d', '428f16f5-a45d-4194-bc5e-ecaed1280721', 'Tidak Setuju', 'No', 2),
 ('ebab9baf-1e70-4909-a840-51cb766534b9', '428f16f5-a45d-4194-bc5e-ecaed1280721', 'Sangat  Setuju', 'Absolutely Yes', 4),
 ('fe752877-cfb2-4c4c-be56-f940cca34ff3', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Setuju', 'Yes', 3);
@@ -107,7 +109,7 @@ INSERT INTO `jawaban_kuisioner` (`id`, `pertanyaan_id`, `jawaban`, `jawaban_ingg
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_kuisioner`
+-- Struktur dari tabel `jenis_kuisioner`
 --
 
 CREATE TABLE `jenis_kuisioner` (
@@ -117,7 +119,7 @@ CREATE TABLE `jenis_kuisioner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jenis_kuisioner`
+-- Dumping data untuk tabel `jenis_kuisioner`
 --
 
 INSERT INTO `jenis_kuisioner` (`id`, `nama`, `nama_inggris`) VALUES
@@ -127,7 +129,7 @@ INSERT INTO `jenis_kuisioner` (`id`, `nama`, `nama_inggris`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas`
+-- Struktur dari tabel `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -139,7 +141,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kelas`
+-- Dumping data untuk tabel `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `nama`, `mata_kuliah_id`, `dosen_id`, `daya_tampung`) VALUES
@@ -149,7 +151,7 @@ INSERT INTO `kelas` (`id`, `nama`, `mata_kuliah_id`, `dosen_id`, `daya_tampung`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kuisoner`
+-- Struktur dari tabel `kuisoner`
 --
 
 CREATE TABLE `kuisoner` (
@@ -157,13 +159,20 @@ CREATE TABLE `kuisoner` (
   `id_mahasiswa` int(11) NOT NULL,
   `id_kelas` int(11) NOT NULL,
   `jenis_id` int(11) NOT NULL,
-  `catatan` varchar(256) NOT NULL
+  `catatan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `kuisoner`
+--
+
+INSERT INTO `kuisoner` (`id_kuisoner`, `id_mahasiswa`, `id_kelas`, `jenis_id`, `catatan`) VALUES
+(20, 1, 1, 1, 'Mantap!');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mahasiswa`
+-- Struktur dari tabel `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -173,7 +182,7 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `mahasiswa`
+-- Dumping data untuk tabel `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nrp`) VALUES
@@ -182,7 +191,7 @@ INSERT INTO `mahasiswa` (`id`, `nama`, `nrp`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mata_kuliah`
+-- Struktur dari tabel `mata_kuliah`
 --
 
 CREATE TABLE `mata_kuliah` (
@@ -193,7 +202,7 @@ CREATE TABLE `mata_kuliah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `mata_kuliah`
+-- Dumping data untuk tabel `mata_kuliah`
 --
 
 INSERT INTO `mata_kuliah` (`id`, `nama`, `kode`, `sks`) VALUES
@@ -206,7 +215,7 @@ INSERT INTO `mata_kuliah` (`id`, `nama`, `kode`, `sks`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pertanyaan_kuisioner`
+-- Struktur dari tabel `pertanyaan_kuisioner`
 --
 
 CREATE TABLE `pertanyaan_kuisioner` (
@@ -217,7 +226,7 @@ CREATE TABLE `pertanyaan_kuisioner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pertanyaan_kuisioner`
+-- Dumping data untuk tabel `pertanyaan_kuisioner`
 --
 
 INSERT INTO `pertanyaan_kuisioner` (`id`, `jenis_id`, `isi`, `isi_inggris`) VALUES
@@ -226,53 +235,65 @@ INSERT INTO `pertanyaan_kuisioner` (`id`, `jenis_id`, `isi`, `isi_inggris`) VALU
 ('2d5a45da-2d54-47ee-9943-8ec41a65ba9d', 1, 'Dosen tidak pernah terlambat', 'Lecturers are never late'),
 ('428f16f5-a45d-4194-bc5e-ecaed1280721', 1, 'Dosen mengajar dengan interaktif', 'Lecturers teach interactively'),
 ('d2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 1, 'Dosen jarang memberikan tugas', 'Lecturers rarely give assignments'),
-('db1c1e17-c6db-438d-9c3b-fb005527a308', 2, 'Percobaan', 'Testing');
+('db1c1e17-c6db-438d-9c3b-fb005527a308', 2, 'Percobaan', 'Testing'),
+('e9e81ea7-d26b-43ec-a6cd-01dc38268a50', 2, 'Pertanyaan 2', 'Question 2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `response_kuisoner`
+-- Struktur dari tabel `response_kuisoner`
 --
 
 CREATE TABLE `response_kuisoner` (
   `id_respon` int(11) NOT NULL,
   `kuisoner_id` int(11) NOT NULL,
-  `pertanyaan_id` int(11) NOT NULL,
-  `jawaban_id` int(11) NOT NULL,
+  `pertanyaan_id` varchar(256) NOT NULL,
+  `jawaban_id` varchar(256) NOT NULL,
   `bobot` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `response_kuisoner`
+--
+
+INSERT INTO `response_kuisoner` (`id_respon`, `kuisoner_id`, `pertanyaan_id`, `jawaban_id`, `bobot`) VALUES
+(30, 20, '0782d7dc-ad75-4667-97d7-125b762f0c1c', '3ade8bae-666b-48c1-85d2-859ec758f655', 4),
+(31, 20, '18c41cf8-3a59-45ff-a690-72b033784144', '15cf2100-e79d-44f9-a684-95556d02b79d', 4),
+(32, 20, '2d5a45da-2d54-47ee-9943-8ec41a65ba9d', '018a1fac-d130-4678-8f73-093f00d729db', 4),
+(33, 20, '428f16f5-a45d-4194-bc5e-ecaed1280721', 'ebab9baf-1e70-4909-a840-51cb766534b9', 4),
+(34, 20, 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'b4efa6ed-2497-438e-b4a0-ed3c1407716c', 4);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `dosen`
+-- Indeks untuk tabel `dosen`
 --
 ALTER TABLE `dosen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `frs`
+-- Indeks untuk tabel `frs`
 --
 ALTER TABLE `frs`
   ADD PRIMARY KEY (`id_frs`);
 
 --
--- Indexes for table `jawaban_kuisioner`
+-- Indeks untuk tabel `jawaban_kuisioner`
 --
 ALTER TABLE `jawaban_kuisioner`
   ADD PRIMARY KEY (`id`),
   ADD KEY `foreign_key` (`pertanyaan_id`);
 
 --
--- Indexes for table `jenis_kuisioner`
+-- Indeks untuk tabel `jenis_kuisioner`
 --
 ALTER TABLE `jenis_kuisioner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kelas`
+-- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`),
@@ -280,88 +301,88 @@ ALTER TABLE `kelas`
   ADD KEY `dosen_id` (`dosen_id`);
 
 --
--- Indexes for table `kuisoner`
+-- Indeks untuk tabel `kuisoner`
 --
 ALTER TABLE `kuisoner`
   ADD PRIMARY KEY (`id_kuisoner`);
 
 --
--- Indexes for table `mahasiswa`
+-- Indeks untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mata_kuliah`
+-- Indeks untuk tabel `mata_kuliah`
 --
 ALTER TABLE `mata_kuliah`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pertanyaan_kuisioner`
+-- Indeks untuk tabel `pertanyaan_kuisioner`
 --
 ALTER TABLE `pertanyaan_kuisioner`
   ADD PRIMARY KEY (`id`),
   ADD KEY `foreign_key` (`jenis_id`);
 
 --
--- Indexes for table `response_kuisoner`
+-- Indeks untuk tabel `response_kuisoner`
 --
 ALTER TABLE `response_kuisoner`
   ADD PRIMARY KEY (`id_respon`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `dosen`
+-- AUTO_INCREMENT untuk tabel `dosen`
 --
 ALTER TABLE `dosen`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `frs`
+-- AUTO_INCREMENT untuk tabel `frs`
 --
 ALTER TABLE `frs`
   MODIFY `id_frs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kelas`
+-- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kuisoner`
+-- AUTO_INCREMENT untuk tabel `kuisoner`
 --
 ALTER TABLE `kuisoner`
-  MODIFY `id_kuisoner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kuisoner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `mahasiswa`
+-- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `mata_kuliah`
+-- AUTO_INCREMENT untuk tabel `mata_kuliah`
 --
 ALTER TABLE `mata_kuliah`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `response_kuisoner`
+-- AUTO_INCREMENT untuk tabel `response_kuisoner`
 --
 ALTER TABLE `response_kuisoner`
-  MODIFY `id_respon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_respon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `kelas`
+-- Ketidakleluasaan untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   ADD CONSTRAINT `dosen_id_fk` FOREIGN KEY (`dosen_id`) REFERENCES `dosen` (`id`),

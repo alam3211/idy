@@ -80,8 +80,21 @@
         $("#sidebar-matkul-list").addClass("active");
 
         function deleteQuestion(id){
-            $("#checkedSubmit").val([id]);
-            $("#submitDeletion").submit();
+            swal({
+                    title: 'Apakah Anda yakin menghapusnya??',
+                    text: "Data akan dihapus dan tidak bisa dikembalikan kembali!",
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    cancelButtonText : 'Batal',
+                    confirmButtonText: 'Hapus'
+                }).then((result) => {
+                    if (result.value) {
+                        $("#checkedSubmit").val([id]);
+                        $("#submitDeletion").submit();
+                    }
+                });
         }
     </script>
 {% endblock %}

@@ -26,6 +26,7 @@
 -->
 <script src="{{ url('assets/js/codebase.core.min.js') }}"></script>
 <script src="{{ url('assets/js/codebase.app.min.js') }}"></script>
+<script src="{{ url('assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
 
 <!-- 
