@@ -39,7 +39,7 @@
                               </div>
                         </div>
                         <div class="block-content">
-                            <h5 id="responden_peserta"><b>Jumlah Responden</b> / Peserta : <b>0</b> / 0</h4>
+                            <h5 id="responden_peserta"><b>Jumlah Responden Ipd / Ipmk / Peserta</b> : 0 / 0 / 0</h4>
                             <table class="js-table-sections table table-bordered">
                                 <thead align="center">
                                     <tr>
@@ -93,6 +93,7 @@
                 method: "POST",
                 data: JSON.parse(matkulVal),
                 success : function(response){
+                    console.log(response.data);
                     updateView(response.data);
                 }
             });
@@ -101,7 +102,7 @@
         {
             $('#ipd').text(data.ipd);
             $('#ipmk').text(data.ipmk);
-            $('#responden_peserta').html("<b>Jumlah Responden</b> / Peserta : <b>"+data.totalResponden+"</b> / "+data.totalPeserta)
+            $('#responden_peserta').html("<b>Jumlah Responden Ipd / Ipmk / Peserta </b>: "+data.totalRespondenIpd + " / " + data.totalRespondenIpmk +" / "+data.totalPeserta)
             data.catatan.forEach(kuisoner => {
                 $('#catatan').append('<td class="font-w600">'+ kuisoner.catatan + '</td>');
             });

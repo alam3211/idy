@@ -6,7 +6,8 @@ class CalculateIpd
 {
     private $kuisioner;
     private $totalPeserta;
-    private $totalResponden;
+    private $totalRespondenIpd;
+    private $totalRespondenIpmk;
     private $ipd;
     private $ipmk;
 
@@ -14,7 +15,8 @@ class CalculateIpd
     {
         $this->kuisioner = $kuisioner;
         $this->totalPeserta = $dayaTampung;
-        $this->totalResponden = $this->sumResponden();
+        $this->totalRespondenIpd = $this->sumResponden("Dosen");
+        $this->totalRespondenIpmk = $this->sumResponden("Mata_Kuliah");
         $this->ipd = $this->calcIndexPrestasi("Dosen");
         $this->ipmk = $this->calcIndexPrestasi("Mata_Kuliah");
     }
@@ -38,20 +40,33 @@ class CalculateIpd
                 }
             }
         }
-        if ($this->totalResponden > 0 && $totalPertanyaan > 0) {
-            $result = floatval($totalBobot/($totalPertanyaan * $this->totalResponden * $maxBobot) * $normalize);
+
+        if ($this->totalRespondenIpd > 0 || $this->totalRespondenIpmk > 0 && $totalPertanyaan > 0) {
+            if ($item['jenis_kuisioner'] == "Dosen") 
+            $result = floatval($totalBobot/($totalPertanyaan * $this->totalRespondenIpd * $maxBobot) * $normalize);
+            else
+            $result = floatval($totalBobot/($totalPertanyaan * $this->totalRespondenIpmk * $maxBobot) * $normalize);
         }
         $result = number_format($result, 2);
         return $result;
     }
 
-    public function sumResponden(){
-        $sumResponden = count($this->kuisioner);
+    public function sumResponden($jenisKuisioner){
+        $sumResponden = 0;
+        foreach ($this->kuisioner as $item) {
+            if ($item['jenis_kuisioner'] == $jenisKuisioner) {
+                $sumResponden++;
+            }
+        }
         return $sumResponden;
     }
     
-    public function totalResponden(){
-        return $this->totalResponden;
+    public function totalRespondenIpd(){
+        return $this->totalRespondenIpd;
+    }
+
+    public function totalRespondenIpmk(){
+        return $this->totalRespondenIpmk;
     }
 
     public function totalPeserta(){

@@ -81,7 +81,8 @@ class DosenController extends Controller
                 'code' => 200,
                 'data' => [
                     'totalPeserta'      => $ipd->hasilIpd()->totalPeserta(),
-                    'totalResponden'    => $ipd->hasilIpd()->totalResponden(),
+                    'totalRespondenIpd'    => $ipd->hasilIpd()->totalRespondenIpd(),
+                    'totalRespondenIpmk'    => $ipd->hasilIpd()->totalRespondenIpmk(),
                     'ipd'               => $ipd->hasilIpd()->ipd(),
                     'ipmk'              => $ipd->hasilIpd()->ipmk(),
                     'catatan'           => $catatanKuisoner->catatanKuisoner()
