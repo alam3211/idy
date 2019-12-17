@@ -8,8 +8,6 @@ use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 
 interface IpdRepository
 {
-    public function kelasbyDosen();
-
     public function kuisionerbyKelas($request);
 
     public function ipmkbyDosen();

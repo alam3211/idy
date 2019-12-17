@@ -28,17 +28,6 @@ class SqlIpdRepository implements IpdRepository
         return $resultSet;
     }
 
-    public function kelasbyDosen()
-    {
-        $querySet = $this->db->query(
-            "SELECT k.id as id, k.nama as nama_kelas, mk.kode as kode_mata_kuliah, mk.nama as nama_mata_kuliah, mk.sks as sks_mata_kuliah, k.daya_tampung as daya_tampung
-            FROM kelas as k INNER JOIN dosen as d on k.dosen_id = d.id INNER JOIN mata_kuliah as mk on k.mata_kuliah_id = mk.id
-            WHERE dosen_id = 1"
-        );
-        $resultSet = $querySet->fetchAll();
-        return $resultSet;
-    }
-
     public function allMataKuliah()
     {
         $querySet = $this->db->query(
@@ -52,7 +41,7 @@ class SqlIpdRepository implements IpdRepository
     public function kuisionerbyKelas($request)
     {
         $querySet = $this->db->query(
-            "SELECT ku.id_kuisoner as id_kuisioner, ke.nama as nama_kelas, rk.kuisoner_id as id_respon_kuisioner , rk.bobot as bobot_respon_kuisioner, ku.jenis_id as jenis_kuisioner
+            "SELECT ku.id_kuisoner as id_kuisioner, ke.nama as nama_kelas, rk.kuisoner_id as id_respon_kuisioner , rk.bobot as bobot_respon_kuisioner, ku.jenis_id as jenis_kuisioner, ku.catatan as catatan_kuisioner
             FROM kuisoner as ku 
             INNER JOIN kelas as ke on ku.id_kelas = ke.id
             LEFT JOIN response_kuisoner as rk on ku.id_kuisoner = rk.kuisoner_id
@@ -81,6 +70,7 @@ class SqlIpdRepository implements IpdRepository
         foreach($resultSet as $item){
             if(!array_key_exists($item['id_kuisioner'],$temp)){
                 $temp[$item['id_kuisioner']]['respon_kuisioner'] = array();
+                $temp[$item['id_kuisioner']]['catatan_kuisioner'] = $item['catatan_kuisioner'];
                 if($item['jenis_kuisioner'] == 1)
                     $temp[$item['id_kuisioner']]['jenis_kuisioner'] = "Dosen";
                 else

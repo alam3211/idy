@@ -9,4 +9,5 @@ use Idy\Ipd\Domain\Model\PertanyaanKuisionerId;
 interface KelasRepository
 {
     public function getKelasById($id);
+    public function kelasbyDosen();
 }

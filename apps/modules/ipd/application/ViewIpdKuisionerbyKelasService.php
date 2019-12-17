@@ -18,10 +18,10 @@ class ViewIpdKuisionerbyKelasService{
 
     public function execute($request){
         try{
-            $allKuisioner       = $this->ipdRepository->kuisionerbyKelas($request);
+            $allKuisioner = $this->ipdRepository->kuisionerbyKelas($request);
 
             $calcIpd = new CalculateIpd($allKuisioner, $request->dayaTampung);
-             
+    
             return new ViewIpdKuisionerbyKelasRespond($calcIpd,null);
         }catch(Execption $e){
             return new ViewIpdKuisionerbyKelasRespond(null, $e);

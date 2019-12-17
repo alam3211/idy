@@ -13,7 +13,7 @@ class Kuisoner
     private $catatan;
     private $bobot;
     
-    public function __construct($idMahasiswa,$idKelas, $idJawaban = [], $bobot = [], $idPertanyaan = [], $jenisId = 1, $catatan = null, $id = null)
+    public function __construct($idMahasiswa, $idKelas, $idJawaban = [], $bobot = [], $idPertanyaan = [], $jenisId = 1, $catatan = null, $id = null)
     {
         $this->id = $id;
         $this->idMahasiswa = $idMahasiswa;

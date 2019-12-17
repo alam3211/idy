@@ -20,6 +20,7 @@ class DosenController extends Controller
     private $pertanyaanRepository;
     private $jawabanRepository;
     private $ipdRepository;
+    private $kelasRepository;
     private $createPertanyaanKuisionerService;
     private $createJawabanKuisionerService;
 
@@ -27,9 +28,10 @@ class DosenController extends Controller
         $this->pertanyaanRepository                     = $this->di->getShared('sql_pertanyaan_repository');
         $this->jawabanRepository                        = $this->di->getShared('sql_jawaban_repository');
         $this->ipdRepository                            = $this->di->getShared('sql_ipd_repository');
+        $this->kelasRepository                          = $this->di->getShared('sql_kelas_repository');
         $this->viewAllPertanyaanJawabanDosenService     = new ViewAllPertanyaanJawabanDosenService($this->pertanyaanRepository);
         $this->viewAllPertanyaanJawabanMatkulService    = new ViewAllPertanyaanJawabanMatkulService($this->pertanyaanRepository);
-        $this->viewKelasbyDosenService                  = new ViewKelasbyDosenService($this->ipdRepository);
+        $this->viewKelasbyDosenService                  = new ViewKelasbyDosenService($this->kelasRepository);
         $this->ViewIpdKuisionerbyKelasService           = new ViewIpdKuisionerbyKelasService($this->ipdRepository);
         $this->viewPertanyaanJawabanService             = new ViewPertanyaanJawabanByPertanyaanIdService($this->pertanyaanRepository);
     }

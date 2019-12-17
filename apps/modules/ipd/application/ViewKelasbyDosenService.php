@@ -4,20 +4,20 @@ namespace Idy\Ipd\Application;
 
 
 use Idy\Ipd\Application\ViewKelasbyDosenRespond;
-use Idy\Ipd\Domain\Model\IpdRepository;
+use Idy\Ipd\Domain\Model\KelasRepository;
 
 class ViewKelasbyDosenService{
 
-    private $ipdRepository;
+    private $kelasRepository;
 
-    public function __construct(IpdRepository $ipdRepository)
+    public function __construct(KelasRepository $kelasRepository)
     {
-        $this->ipdRepository = $ipdRepository;
+        $this->kelasRepository = $kelasRepository;
     }
 
     public function execute(){
         try{
-            $kelas = $this->ipdRepository->kelasbyDosen();
+            $kelas = $this->kelasRepository->kelasbyDosen();
             return new ViewKelasbyDosenRespond($kelas,null);
         }catch(Execption $e){
             return new ViewKelasbyDosenRespond(null, $e);
