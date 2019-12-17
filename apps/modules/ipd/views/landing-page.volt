@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-md-4">
                     <!-- Password Reminder -->
-                    <a class="block block-link-shadow" href="op_auth_reminder.html">
+                    <a class="block block-link-shadow" href="{{ url(['for': 'ipd-mahasiswa-kuisoner-mata-kuliah']) }}">
                         <div class="block-content text-center">
                             <div class="py-20">
                                 <p class="mb-10">
