@@ -59,6 +59,22 @@
                             </table>
                         </div>
                     </div>
+                    <div class="block">
+                        <div class="block-header block-header-default">
+                            <h3 class="block-title">
+                                Catatan Kuisoner
+                            </h3>
+                        </div>
+                        <div class="block-content">
+                            <table class="js-table-sections table table-bordered">
+                                <thead align="center">
+                                    <th>Kesan & Pesan</th>
+                                </thead>
+                                <tbody id="catatan" class="js-table-sections-header" align>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <!-- END Page Content -->
 {% endblock %}
@@ -70,6 +86,7 @@
         });
 
         $("#matakuliah").change(function() {
+            $('#catatan').empty();
             const matkulVal = $("#matakuliah").val();
             $.ajax({
                 url: "{{ url(['for':'ipd-dosen-ipd']) }}",
@@ -85,6 +102,9 @@
             $('#ipd').text(data.ipd);
             $('#ipmk').text(data.ipmk);
             $('#responden_peserta').html("<b>Jumlah Responden</b> / Peserta : <b>"+data.totalResponden+"</b> / "+data.totalPeserta)
+            data.catatan.forEach(kuisoner => {
+                $('#catatan').append('<td class="font-w600">'+ kuisoner.catatan + '</td>');
+            });
         }
     </script>
 {% endblock %}

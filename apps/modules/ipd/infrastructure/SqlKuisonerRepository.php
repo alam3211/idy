@@ -55,6 +55,18 @@ class SqlKuisonerRepository implements KuisonerRepository
         return $resultSet;
     }
 
+    public function allKuisonerKelasbyKelasId($kelas){
+        $querySet = $this->db->query(
+            "SELECT *
+            FROM kuisoner
+            WHERE kuisoner.id_kelas = ?",[
+                $kelas->id
+            ]
+        );
+        $resultSet = $querySet->fetchAll();
+        return $resultSet;
+    }
+
     public function submitForm(Kuisoner $kuisoner){
         $querySetKuisoner = $this->db->execute(
             "INSERT INTO kuisoner ( jenis_id , id_kelas, id_mahasiswa, catatan) VALUES (?,?,?,?)",
