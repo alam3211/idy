@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2019 pada 18.27
+-- Waktu pembuatan: 17 Des 2019 pada 04.04
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kpl_ipd`
+-- Database: `idy`
 --
 
 -- --------------------------------------------------------
@@ -81,16 +81,30 @@ CREATE TABLE `jawaban_kuisioner` (
 --
 
 INSERT INTO `jawaban_kuisioner` (`id`, `pertanyaan_id`, `jawaban`, `jawaban_inggris`, `bobot`) VALUES
-('00b738a1-57d1-4bd1-863a-8c04080513dc', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Jawaban2', 'answer2', 2),
+('00b738a1-57d1-4bd1-863a-8c04080513dc', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Tidak Setuju', 'No', 2),
+('018a1fac-d130-4678-8f73-093f00d729db', '2d5a45da-2d54-47ee-9943-8ec41a65ba9d', 'Sangat Setuju', 'Absolutely Yes', 4),
+('04a5174e-0d1f-4eac-b02f-d5cb465ce44b', '2d5a45da-2d54-47ee-9943-8ec41a65ba9d', 'Tidak Setuju', 'No', 2),
+('15cf2100-e79d-44f9-a684-95556d02b79d', '18c41cf8-3a59-45ff-a690-72b033784144', 'Sangat Setuju', 'Absolutely Yes', 4),
 ('3ade8bae-666b-48c1-85d2-859ec758f655', '0782d7dc-ad75-4667-97d7-125b762f0c1c', 'Sangat  Ya', 'Absolutely Yes', 4),
+('401b69e4-28c9-4858-88b7-d89e0e629544', '18c41cf8-3a59-45ff-a690-72b033784144', 'Setuju', 'Yes', 3),
+('52340e4c-3342-4efc-a95e-5e60bcd26c53', '428f16f5-a45d-4194-bc5e-ecaed1280721', 'Setuju', 'Yes', 3),
+('6dbad4c7-c51a-41f8-890d-b453b4c8f162', 'e9e81ea7-d26b-43ec-a6cd-01dc38268a50', 'Jawaban 1', 'Answer1', 1),
 ('6ebe669d-96ab-4668-8ed1-b10902f3b180', 'db1c1e17-c6db-438d-9c3b-fb005527a308', 'jawaban1', 'answer1', 1),
 ('6ebe669d-96ab-4668-8ed1-b10902f3b181', 'db1c1e17-c6db-438d-9c3b-fb005527a308', 'jawaban2', 'answer2', 1),
-('71331671-2c07-4869-94e1-9364e12fca68', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Jawaban1', 'answer1', 1),
+('71331671-2c07-4869-94e1-9364e12fca68', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Sangat Tidak Setuju', 'Absolutely No', 1),
+('7fe8dc39-f4d6-4081-b249-4ef3a47cb020', '428f16f5-a45d-4194-bc5e-ecaed1280721', 'Sangat Tidak Setuju', 'Absolutely No', 1),
+('80026783-c836-4705-9c9d-9cfe0ac43f61', '18c41cf8-3a59-45ff-a690-72b033784144', 'Sangat Tidak Setuju', 'Absolutely No', 1),
 ('a5a43118-b292-4288-bf10-4d726b5893e9', '0782d7dc-ad75-4667-97d7-125b762f0c1c', 'Ya', 'Yes', 3),
-('b4efa6ed-2497-438e-b4a0-ed3c1407716c', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'jawaban4', 'answer4', 4),
+('b4efa6ed-2497-438e-b4a0-ed3c1407716c', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Sangat  Setuju', 'Absolutely Yes', 4),
 ('b6c04749-888e-44a4-bd22-e4b8dbd6c362', '0782d7dc-ad75-4667-97d7-125b762f0c1c', 'Sepertinya', 'Maybe', 2),
+('bb1d7a2e-2bb8-4984-a3e7-60ddf75a31a6', '2d5a45da-2d54-47ee-9943-8ec41a65ba9d', 'Sangat Tidak Setuju', 'Absolutely No', 1),
+('bd04ef79-1250-4a6a-b4e0-8ac04a0d7652', '2d5a45da-2d54-47ee-9943-8ec41a65ba9d', 'Setuju', 'Yes', 3),
 ('c827f43e-403b-4755-b1a0-f130db67fce9', '0782d7dc-ad75-4667-97d7-125b762f0c1c', 'Tidak', 'No', 1),
-('fe752877-cfb2-4c4c-be56-f940cca34ff3', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'jawaban3', 'answer3', 3);
+('d401e9ba-a62b-4324-a85c-c80364077c0a', '18c41cf8-3a59-45ff-a690-72b033784144', 'Tidak Setuju', 'No', 2),
+('dd5cb57e-d429-45ca-8bdf-47bd3e5305ec', 'e9e81ea7-d26b-43ec-a6cd-01dc38268a50', 'Jawaban 2', 'Answer 2', 2),
+('e4a93e50-c9f9-4259-bf6d-0def7504be3d', '428f16f5-a45d-4194-bc5e-ecaed1280721', 'Tidak Setuju', 'No', 2),
+('ebab9baf-1e70-4909-a840-51cb766534b9', '428f16f5-a45d-4194-bc5e-ecaed1280721', 'Sangat  Setuju', 'Absolutely Yes', 4),
+('fe752877-cfb2-4c4c-be56-f940cca34ff3', 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'Setuju', 'Yes', 3);
 
 -- --------------------------------------------------------
 
@@ -144,8 +158,16 @@ CREATE TABLE `kuisoner` (
   `id_kuisoner` int(11) NOT NULL,
   `id_mahasiswa` int(11) NOT NULL,
   `id_kelas` int(11) NOT NULL,
-  `jenis_id` int(11) NOT NULL
+  `jenis_id` int(11) NOT NULL,
+  `catatan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `kuisoner`
+--
+
+INSERT INTO `kuisoner` (`id_kuisoner`, `id_mahasiswa`, `id_kelas`, `jenis_id`, `catatan`) VALUES
+(20, 1, 1, 1, 'Mantap!');
 
 -- --------------------------------------------------------
 
@@ -209,8 +231,12 @@ CREATE TABLE `pertanyaan_kuisioner` (
 
 INSERT INTO `pertanyaan_kuisioner` (`id`, `jenis_id`, `isi`, `isi_inggris`) VALUES
 ('0782d7dc-ad75-4667-97d7-125b762f0c1c', 1, 'Dosen telah mengajar dengan baik', 'Lecturers has been teaching very well'),
-('d2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 1, 'Testing2', 'Testing2'),
-('db1c1e17-c6db-438d-9c3b-fb005527a308', 2, 'Percobaan', 'Testing');
+('18c41cf8-3a59-45ff-a690-72b033784144', 1, 'Dosen paham atas materi yang disampaikan', '\r\nThe lecturer understands the material that is presented'),
+('2d5a45da-2d54-47ee-9943-8ec41a65ba9d', 1, 'Dosen tidak pernah terlambat', 'Lecturers are never late'),
+('428f16f5-a45d-4194-bc5e-ecaed1280721', 1, 'Dosen mengajar dengan interaktif', 'Lecturers teach interactively'),
+('d2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 1, 'Dosen jarang memberikan tugas', 'Lecturers rarely give assignments'),
+('db1c1e17-c6db-438d-9c3b-fb005527a308', 2, 'Percobaan', 'Testing'),
+('e9e81ea7-d26b-43ec-a6cd-01dc38268a50', 2, 'Pertanyaan 2', 'Question 2');
 
 -- --------------------------------------------------------
 
@@ -221,9 +247,21 @@ INSERT INTO `pertanyaan_kuisioner` (`id`, `jenis_id`, `isi`, `isi_inggris`) VALU
 CREATE TABLE `response_kuisoner` (
   `id_respon` int(11) NOT NULL,
   `kuisoner_id` int(11) NOT NULL,
-  `pertanyaan_id` int(11) NOT NULL,
-  `jawaban_id` int(11) NOT NULL
+  `pertanyaan_id` varchar(256) NOT NULL,
+  `jawaban_id` varchar(256) NOT NULL,
+  `bobot` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `response_kuisoner`
+--
+
+INSERT INTO `response_kuisoner` (`id_respon`, `kuisoner_id`, `pertanyaan_id`, `jawaban_id`, `bobot`) VALUES
+(30, 20, '0782d7dc-ad75-4667-97d7-125b762f0c1c', '3ade8bae-666b-48c1-85d2-859ec758f655', 4),
+(31, 20, '18c41cf8-3a59-45ff-a690-72b033784144', '15cf2100-e79d-44f9-a684-95556d02b79d', 4),
+(32, 20, '2d5a45da-2d54-47ee-9943-8ec41a65ba9d', '018a1fac-d130-4678-8f73-093f00d729db', 4),
+(33, 20, '428f16f5-a45d-4194-bc5e-ecaed1280721', 'ebab9baf-1e70-4909-a840-51cb766534b9', 4),
+(34, 20, 'd2ef7c3b-e7d8-46bc-93c6-9a5b5272231c', 'b4efa6ed-2497-438e-b4a0-ed3c1407716c', 4);
 
 --
 -- Indexes for dumped tables
@@ -319,7 +357,7 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT untuk tabel `kuisoner`
 --
 ALTER TABLE `kuisoner`
-  MODIFY `id_kuisoner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kuisoner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `mahasiswa`
@@ -337,7 +375,7 @@ ALTER TABLE `mata_kuliah`
 -- AUTO_INCREMENT untuk tabel `response_kuisoner`
 --
 ALTER TABLE `response_kuisoner`
-  MODIFY `id_respon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_respon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
