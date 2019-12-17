@@ -33,7 +33,7 @@
                                 <select class="form-control" id="matakuliah" name="matakuliah">
                                     <option value="" selected disabled>-- Pilih Mata Kuliah --</option>
                                     {% for kelas in kelasOptions %}
-                                    <option value='{ "id":"{{ kelas["id"] }}","daya_tampung":"{{ kelas["daya_tampung"] }}"}'>{{ kelas['kode_mata_kuliah']}} | {{ kelas['nama_mata_kuliah'] }} | {{ kelas['nama_kelas'] }} | {{ kelas['sks_mata_kuliah'] }} SKS</option>
+                                    <option value='{ "id":"{{ kelas["id"] }}","daya_tampung":"{{ kelas["daya_tampung"] }}"}'>{{ kelas['kode_mata_kuliah']}} | {{ kelas['nama_mata_kuliah'] }} | {{ kelas['nama_kelas'] }} | {{ kelas['sks_mata_kuliah'] }} SKS | {{ kelas['daya_tampung'] }} Orang</option>
                                     {% endfor %}
                                 </select>
                               </div>
@@ -93,8 +93,10 @@
                 method: "POST",
                 data: JSON.parse(matkulVal),
                 success : function(response){
-                    console.log(response.data);
-                    updateView(response.data);
+                    if(response.data.code == 200)
+                        updateView(response.data);
+                    else
+                        exceptionView(response.data);
                 }
             });
         })
@@ -104,8 +106,12 @@
             $('#ipmk').text(data.ipmk);
             $('#responden_peserta').html("<b>Jumlah Responden Ipd / Ipmk / Peserta </b>: "+data.totalRespondenIpd + " / " + data.totalRespondenIpmk +" / "+data.totalPeserta)
             data.catatan.forEach(kuisoner => {
-                $('#catatan').append('<td class="font-w600">'+ kuisoner.catatan + '</td>');
+                $('#catatan').append('<tr><td class="font-w600">'+ kuisoner.catatan + '</td><tr>');
             });
+        }
+        function exceptionView(data)
+        {
+            $('#responden_peserta').html("<b style='color:red;'>" + data.msg +"<b>");
         }
     </script>
 {% endblock %}

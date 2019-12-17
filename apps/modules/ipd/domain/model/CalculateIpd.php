@@ -21,6 +21,16 @@ class CalculateIpd
         $this->ipmk = $this->calcIndexPrestasi("Mata_Kuliah");
     }
 
+    public function respondenMinimum() : bool{
+        
+        $kuisionerLimit = ((80/100) * $this->totalPeserta);
+    
+        if ($this->totalRespondenIpd < $kuisionerLimit || $this->totalRespondenIpmk < $kuisionerLimit) {
+            return false;
+        }
+        return true;
+    }
+
     public function calcIndexPrestasi($jenisKuisioner){
         $result = floatval(0.0);
         $isCounted = false;

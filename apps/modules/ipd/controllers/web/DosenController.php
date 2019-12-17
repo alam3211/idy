@@ -76,19 +76,26 @@ class DosenController extends Controller
 
             $requestCatatanKuisoner = new ViewCatatanKuisionerbyKelasRequest($idKelas);
             $catatanKuisoner = $this->viewCatatanKuisionerbyKelasService->execute($requestCatatanKuisoner);
-
-            $response = [
-                'code' => 200,
-                'data' => [
-                    'totalPeserta'      => $ipd->hasilIpd()->totalPeserta(),
-                    'totalRespondenIpd'    => $ipd->hasilIpd()->totalRespondenIpd(),
-                    'totalRespondenIpmk'    => $ipd->hasilIpd()->totalRespondenIpmk(),
-                    'ipd'               => $ipd->hasilIpd()->ipd(),
-                    'ipmk'              => $ipd->hasilIpd()->ipmk(),
-                    'catatan'           => $catatanKuisoner->catatanKuisoner()
-                ]
-            ];
-
+            if(method_exists($ipd,'getMessage')){
+                $response = [
+                    'code' => 307,
+                    'data' => [
+                        'msg'   => $ipd->getMessage()
+                    ]
+                ];    
+            }else{
+                $response = [
+                    'code' => 200,
+                    'data' => [
+                        'totalPeserta'          => $ipd->hasilIpd()->totalPeserta(),
+                        'totalRespondenIpd'     => $ipd->hasilIpd()->totalRespondenIpd(),
+                        'totalRespondenIpmk'    => $ipd->hasilIpd()->totalRespondenIpmk(),
+                        'ipd'                   => $ipd->hasilIpd()->ipd(),
+                        'ipmk'                  => $ipd->hasilIpd()->ipmk(),
+                        'catatan'               => $catatanKuisoner->catatanKuisoner()
+                    ]
+                ];
+            }
             $this->response->setJsonContent($response);
 
         }else $this->response->setJsonContent('This is not ajax call');
