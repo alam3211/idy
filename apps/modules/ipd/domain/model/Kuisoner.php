@@ -47,6 +47,22 @@ class Kuisoner
         return $this->catatan;
     }
 
+    public function jawabanKosong(){
+        foreach ($this->idJawaban as $item) {
+            if($item==""){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function catatanKosong(){
+        if($this->catatan==""){
+                return true;
+        }
+        return false;
+    }
+
     public function bobot(){
         return $this->bobot;
     }

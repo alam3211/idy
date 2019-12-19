@@ -22,6 +22,9 @@ class SubmitKuisionerKelasService{
     public function execute(SubmitKuisionerKelasRequest $request){
         try{
             $kuisonerSubmit = new Kuisoner($request->idMahasiswa,$request->idKelas,$request->jawaban, $request->bobot,$request->pertanyaan,$request->jenisKuisoner,$request->catatan);
+            if($kuisonerSubmit->jawabanKosong() || $kuisonerSubmit->catatanKosong()){
+                return false;
+            }
             $kuisoner = $this->kuisonerRepository->submitForm($kuisonerSubmit);
             return $kuisoner;
         }catch(Execption $e){

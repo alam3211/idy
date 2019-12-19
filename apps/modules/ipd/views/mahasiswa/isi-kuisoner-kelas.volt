@@ -36,10 +36,11 @@
                                     <input type="hidden" name="pertanyaan[]" value="{{p['detail'][0]['id']}}">
                                     <label for="exampleFormControlSelect1"> {{index}}. {{p['detail'][0]['isi']}}</label><br>
                                     <label for="exampleFormControlSelect1"><i>{{index}}. {{p['detail'][0]['isiInggris']}}</i></label><br>
+                                    <input style="display: none;" class="form-check-input radio" type="radio" name="jawaban[{{index-1}}]" value="" checked>
                                     {% for key, r in p['relation'] %}
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="jawaban[{{index-1}}]" value="{{r['id']}}|{{r['bobot']}}" checked>
-                                        <label class="form-check-label" checked="checked">{{r['jawaban']}}</label> |
+                                        <input class="form-check-input radio" type="radio" name="jawaban[{{index-1}}]" value="{{r['id']}}|{{r['bobot']}}">
+                                        <label class="form-check-label">{{r['jawaban']}}</label> |
                                         <label class="form-check-label"><i>{{r['jawabanInggris']}}</i></label>
                                     </div>
                                     {% endfor %}
@@ -61,5 +62,9 @@
         jQuery(function () {
             Codebase.helpers('table-tools');
         });
+
+        // $(document).ready(function() {
+        //     $(".radio").prop("checked",false);
+        // });
     </script>
 {% endblock %}

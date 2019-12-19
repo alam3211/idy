@@ -80,7 +80,6 @@ class MahasiswaController extends Controller
     }
 
     public function submitKuisonerKelasAction(){
-        // dd($this->request->getPost());
         $idKelas = $this->request->getPost('kelas');
         $pertanyaan = $this->request->getPost('pertanyaan');
         $jawaban = $this->request->getPost('jawaban');
